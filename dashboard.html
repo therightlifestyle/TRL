@@ -2,27 +2,23 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Dashboard | TRL Systems</title>
+<title>Dashboard | TRL</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+<script defer src="assets/js/app.js"></script>
+<link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body>
+<body onload="protectPage()">
 
-<h1>Client Dashboard</h1>
+<section>
+<h1>TRL Client Dashboard</h1>
+
 <p>Welcome to your automation portal.</p>
 
-<button onclick="logout()">Logout</button>
+<a href="vault.html">Access Automation Vault</a>
+<br><br>
+<button onclick="logoutUser()">Logout</button>
 
-<script>
-const supabase = supabase.createClient(
-  "YOUR_SUPABASE_URL",
-  "YOUR_PUBLIC_ANON_KEY"
-);
-
-async function logout(){
-await supabase.auth.signOut();
-window.location.href="index.html";
-}
-</script>
+</section>
 
 </body>
 </html>
