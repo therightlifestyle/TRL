@@ -1,140 +1,298 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>TRL Systems | AI Automation for Entrepreneurs</title>
-  <meta name="description" content="TRL Systems builds AI-powered automation systems for modern entrepreneurs. Automate your operations. Scale your execution." />
+<title>TRL Systems | AI Automation Agency</title>
+<meta name="description" content="TRL Systems builds AI-powered automation systems for modern entrepreneurs. Automate workflows. Scale execution.">
+<meta name="keywords" content="AI automation agency, workflow automation, AI systems for entrepreneurs, business automation">
+<meta name="author" content="TRL Systems">
 
-  <!-- Security Headers -->
-  <meta http-equiv="X-Content-Type-Options" content="nosniff">
-  <meta http-equiv="X-Frame-Options" content="DENY">
-  <meta name="referrer" content="strict-origin-when-cross-origin">
+<!-- Open Graph -->
+<meta property="og:title" content="TRL Systems | AI Automation">
+<meta property="og:description" content="Automate the routine. Accelerate your execution.">
+<meta property="og:type" content="website">
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
 
-  <link rel="stylesheet" href="css/style.css">
+<!-- Favicon (create favicon.ico and place in root later) -->
+<link rel="icon" href="favicon.ico">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+/* GLOBAL */
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+font-family:'Inter',sans-serif;
+background:#0a0a0f;
+color:#fff;
+overflow-x:hidden;
+scroll-behavior:smooth;
+}
+section{padding:100px 8%}
+h1,h2,h3{font-weight:800}
+p{color:#bcbcbc}
+.reveal{opacity:0;transform:translateY(40px);transition:1s}
+.reveal.active{opacity:1;transform:translateY(0)}
+
+/* NAV */
+nav{
+position:fixed;top:0;width:100%;
+display:flex;justify-content:space-between;
+align-items:center;padding:20px 8%;
+background:rgba(10,10,15,0.7);
+backdrop-filter:blur(10px);
+border-bottom:1px solid rgba(255,255,255,0.05);
+z-index:1000;
+}
+nav h2 span{color:#3b82f6}
+nav ul{display:flex;gap:30px;list-style:none}
+nav a{text-decoration:none;color:#fff;transition:0.3s}
+nav a:hover{color:#3b82f6}
+.btn{
+background:linear-gradient(90deg,#3b82f6,#6366f1);
+padding:10px 22px;border-radius:6px;font-weight:600;
+box-shadow:0 0 20px rgba(59,130,246,0.3);
+}
+
+/* HERO */
+.hero{
+height:100vh;
+display:flex;flex-direction:column;
+justify-content:center;align-items:center;
+text-align:center;position:relative;
+}
+.hero h1{font-size:48px;max-width:900px}
+.hero p{margin:25px 0;font-size:18px;max-width:600px}
+
+/* PARTICLES */
+canvas{
+position:absolute;top:0;left:0;width:100%;height:100%;z-index:-1;
+}
+
+/* CARDS */
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:30px;margin-top:60px;
+}
+.card{
+background:rgba(255,255,255,0.03);
+padding:40px;border-radius:12px;
+border:1px solid rgba(255,255,255,0.08);
+transition:0.4s;
+}
+.card:hover{
+transform:translateY(-10px);
+border-color:#3b82f6;
+box-shadow:0 0 40px rgba(59,130,246,0.2);
+}
+.card h3{color:#3b82f6;margin-bottom:15px}
+
+/* PROCESS */
+.process{background:#11111a}
+.process-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:30px;text-align:center;margin-top:60px;
+}
+.process-box h3{color:#6366f1}
+
+/* STATS */
+.stats{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:30px;text-align:center;margin-top:60px;
+}
+.stat-number{font-size:40px;color:#3b82f6}
+
+/* CTA */
+.cta{
+background:linear-gradient(90deg,#1e3a8a,#312e81);
+text-align:center;border-radius:15px;
+margin:0 8%;padding:80px 40px;
+}
+
+/* CONTACT */
+form{
+max-width:600px;margin:auto;
+display:flex;flex-direction:column;gap:20px;
+}
+input,textarea{
+padding:14px;background:#11111a;
+border:1px solid rgba(255,255,255,0.1);
+border-radius:8px;color:#fff;
+}
+textarea{resize:none;height:120px}
+
+/* FOOTER */
+footer{
+padding:40px 8%;background:#07070b;
+display:flex;justify-content:space-between;
+flex-wrap:wrap;border-top:1px solid rgba(255,255,255,0.05);
+}
+footer a{color:#aaa;text-decoration:none;margin-left:20px}
+footer a:hover{color:#3b82f6}
+
+@media(max-width:768px){
+.hero h1{font-size:32px}
+nav ul{display:none}
+}
+
+</style>
 </head>
+
 <body>
 
-  <!-- Navigation -->
-  <header class="navbar">
-    <div class="container nav-container">
-      <div class="logo">TRL<span>Systems</span></div>
-      <nav>
-        <ul>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#process">Process</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#contact" class="nav-cta">Book Audit</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+<nav>
+<h2>TRL<span>Systems</span></h2>
+<ul>
+<li><a href="#services">Services</a></li>
+<li><a href="#process">Process</a></li>
+<li><a href="#contact" class="btn">Book Audit</a></li>
+</ul>
+</nav>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="container">
-      <h1>AI Automation Systems for Modern Entrepreneurs</h1>
-      <p>We design intelligent workflows that eliminate repetitive work, organize your operations, and accelerate your business growth.</p>
-      <a href="#contact" class="btn-primary">Book Free AI Audit</a>
-    </div>
-  </section>
+<section class="hero">
+<canvas id="particles"></canvas>
+<h1 class="reveal">AI Automation Systems for Modern Entrepreneurs</h1>
+<p class="reveal">We design intelligent workflows that eliminate repetitive work and accelerate business growth.</p>
+<a href="#contact" class="btn reveal">Book Free AI Audit</a>
+</section>
 
-  <!-- Services Section -->
-  <section id="services" class="section">
-    <div class="container">
-      <h2>Our Solutions</h2>
+<section id="services">
+<h2 class="reveal">Our Solutions</h2>
+<div class="cards">
+<div class="card reveal">
+<h3>Quick Automation Wins</h3>
+<p>Lead qualification, email automation, CRM structuring.</p>
+</div>
+<div class="card reveal">
+<h3>Core Business Systems</h3>
+<p>Workflow automation, onboarding systems, analytics dashboards.</p>
+</div>
+<div class="card reveal">
+<h3>Full AI Integration</h3>
+<p>End-to-end AI system architecture and optimization.</p>
+</div>
+</div>
+</section>
 
-      <div class="services-grid">
-        <div class="card">
-          <h3>Quick Automation Wins</h3>
-          <p>Lead qualification systems, email automation, CRM structuring, and content repurposing workflows.</p>
-          <span>$100 – $500</span>
-        </div>
+<section class="stats">
+<div class="reveal">
+<div class="stat-number" data-target="50">0</div>
+<p>Automation Projects</p>
+</div>
+<div class="reveal">
+<div class="stat-number" data-target="200">0</div>
+<p>Hours Saved Monthly</p>
+</div>
+<div class="reveal">
+<div class="stat-number" data-target="100">0</div>
+<p>% Efficiency Boost</p>
+</div>
+</section>
 
-        <div class="card">
-          <h3>Core Business Systems</h3>
-          <p>Workflow automation, onboarding systems, analytics dashboards, and marketing automation stacks.</p>
-          <span>$500 – $1,500</span>
-        </div>
+<section id="process" class="process">
+<h2 class="reveal">Our Process</h2>
+<div class="process-grid">
+<div class="process-box reveal"><h3>1. Audit</h3><p>Identify system gaps.</p></div>
+<div class="process-box reveal"><h3>2. Build</h3><p>Design automation systems.</p></div>
+<div class="process-box reveal"><h3>3. Automate</h3><p>Integrate workflows.</p></div>
+<div class="process-box reveal"><h3>4. Scale</h3><p>Optimize and expand.</p></div>
+</div>
+</section>
 
-        <div class="card">
-          <h3>Full AI Integration</h3>
-          <p>End-to-end business automation including CRM, content systems, support automation, and performance tracking.</p>
-          <span>$1,500 – $5,000+</span>
-        </div>
-      </div>
-    </div>
-  </section>
+<section class="cta reveal">
+<h2>Ready to Automate?</h2>
+<p>Book a free AI audit today.</p>
+<br>
+<a href="#contact" class="btn">Start Now</a>
+</section>
 
-  <!-- Process Section -->
-  <section id="process" class="section dark-section">
-    <div class="container">
-      <h2>Our Process</h2>
+<section id="contact">
+<h2 class="reveal">Book Your Free AI Audit</h2>
+<form action="https://formspree.io/f/yourformid" method="POST" class="reveal">
+<input type="text" placeholder="Full Name" required>
+<input type="email" placeholder="Email Address" required>
+<textarea placeholder="Describe your biggest bottleneck..." required></textarea>
+<button class="btn">Submit</button>
+</form>
+</section>
 
-      <div class="process-grid">
-        <div>
-          <h3>1. Audit</h3>
-          <p>We analyze your workflows and identify automation gaps.</p>
-        </div>
+<footer>
+<div>© 2026 TRL Systems. All rights reserved.</div>
+<div>
+<a href="privacy.html">Privacy</a>
+<a href="terms.html">Terms</a>
+</div>
+</footer>
 
-        <div>
-          <h3>2. Build</h3>
-          <p>We design structured AI-powered systems tailored to your operations.</p>
-        </div>
+<script>
 
-        <div>
-          <h3>3. Automate</h3>
-          <p>We integrate tools and workflows for seamless execution.</p>
-        </div>
+/* Scroll Reveal */
+function reveal(){
+document.querySelectorAll('.reveal').forEach(el=>{
+const windowHeight=window.innerHeight;
+const elementTop=el.getBoundingClientRect().top;
+if(elementTop<windowHeight-100){el.classList.add('active')}
+})
+}
+window.addEventListener('scroll',reveal);
+reveal();
 
-        <div>
-          <h3>4. Scale</h3>
-          <p>We optimize systems so you can focus on growth, not repetition.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+/* Counter Animation */
+document.querySelectorAll('.stat-number').forEach(counter=>{
+const update=()=>{
+const target=+counter.getAttribute('data-target');
+const count=+counter.innerText;
+const increment=target/100;
+if(count<target){
+counter.innerText=Math.ceil(count+increment);
+setTimeout(update,20);
+}else{counter.innerText=target}
+}
+update();
+});
 
-  <!-- About Section -->
-  <section id="about" class="section">
-    <div class="container">
-      <h2>About TRL Systems</h2>
-      <p>
-        TRL Systems is an AI automation company focused on helping global entrepreneurs build structured, scalable businesses.
-        We believe execution improves when systems are intelligent, organized, and automated.
-      </p>
-    </div>
-  </section>
+/* Particle Background */
+const canvas=document.getElementById("particles");
+const ctx=canvas.getContext("2d");
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
 
-  <!-- Contact Section -->
-  <section id="contact" class="section contact-section">
-    <div class="container">
-      <h2>Book Your Free AI Audit</h2>
-      <p>Tell us about your business and we’ll identify automation opportunities.</p>
+let particles=[];
+for(let i=0;i<80;i++){
+particles.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+radius:Math.random()*2,
+dx:(Math.random()-0.5),
+dy:(Math.random()-0.5)
+});
+}
 
-      <form action="https://formspree.io/f/yourformid" method="POST" class="contact-form">
-        <input type="text" name="name" placeholder="Full Name" required />
-        <input type="email" name="email" placeholder="Email Address" required />
-        <textarea name="message" placeholder="Describe your biggest workflow bottleneck..." required></textarea>
-        <button type="submit" class="btn-primary">Submit Request</button>
-      </form>
-    </div>
-  </section>
+function animate(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+particles.forEach(p=>{
+ctx.beginPath();
+ctx.arc(p.x,p.y,p.radius,0,Math.PI*2);
+ctx.fillStyle="#3b82f6";
+ctx.fill();
+p.x+=p.dx;
+p.y+=p.dy;
+if(p.x<0||p.x>canvas.width)p.dx*=-1;
+if(p.y<0||p.y>canvas.height)p.dy*=-1;
+});
+requestAnimationFrame(animate);
+}
+animate();
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container footer-container">
-      <p>© 2026 TRL Systems. All rights reserved.</p>
-      <div class="footer-links">
-        <a href="privacy.html">Privacy Policy</a>
-        <a href="terms.html">Terms & Conditions</a>
-      </div>
-    </div>
-  </footer>
+</script>
 
 </body>
 </html>
