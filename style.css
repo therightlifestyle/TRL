@@ -295,5 +295,32 @@ nav a:hover {
     gap: 15px;
     text-align: center;
   }
+/* Fade In Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
+.section,
+.hero h1,
+.hero p,
+.card {
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+/* Subtle Glow Effect */
+.btn-primary {
+  box-shadow: 0 0 15px rgba(37, 99, 235, 0.3);
+}
+
+/* Smooth Card Glow */
+.card:hover {
+  box-shadow: 0 0 20px rgba(37, 99, 235, 0.2);
+}
 }
