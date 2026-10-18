@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Demonstration — Enquiry triage &amp; routing · TRL</title>
+<meta name="description" content="A working TRL demonstration: turn an unstructured customer enquiry into structured, routed fields with a draft reply. Runs entirely in the browser.">
+<meta name="robots" content="index,follow">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../assets/fonts/manrope-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../assets/css/style.css">
+<style>
+  .panel{border:1px solid var(--hair-2);border-radius:var(--r-lg);overflow:hidden;
+    background:linear-gradient(170deg,var(--n-900),var(--n-1000));box-shadow:var(--shadow-sm)}
+  .panel-head{padding:1.4rem 1.6rem;border-bottom:1px solid var(--hair);display:flex;
+    align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+    background:rgba(255,255,255,.02)}
+  .panel-head b{font-size:.9rem;font-weight:600}
+  .panel-body{padding:clamp(1.3rem,2.6vw,2rem)}
+  .ta{width:100%;min-height:158px;background:var(--n-950);color:var(--tx);
+    border:1px solid var(--hair-2);border-radius:var(--r);padding:1rem 1.1rem;
+    font-family:var(--sans);font-size:.94rem;line-height:1.65;resize:vertical;transition:border-color .25s}
+  .ta:focus{outline:none;border-color:var(--gold)}
+  .ta::placeholder{color:var(--tx-4)}
+  .samples{display:flex;flex-wrap:wrap;gap:.55rem;margin-top:1rem;align-items:center}
+  .samples button{background:var(--surf);border:1px solid var(--hair);color:var(--tx-3);
+    border-radius:2px;padding:.45rem .85rem;font-size:.78rem;cursor:pointer;
+    font-family:var(--sans);font-weight:600;transition:color .2s,border-color .2s,background .2s}
+  .samples button:hover{color:var(--tx);border-color:var(--gold);background:rgba(201,162,39,.08)}
+  .samples .lbl{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--tx-4);font-weight:700;margin-right:.3rem}
+  .out{display:none}
+  .out.show{display:block;animation:fade .5s var(--ease) both}
+  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  .kv{margin:0;border-top:1px solid var(--hair)}
+  .kv>div{display:grid;grid-template-columns:minmax(120px,.42fr) minmax(0,1fr);
+    gap:1rem;padding:.85rem 0;border-bottom:1px solid var(--hair)}
+  .kv dt{font-size:.7rem;letter-spacing:.13em;text-transform:uppercase;
+    color:var(--tx-4);font-weight:700;padding-top:.15rem}
+  .kv dd{margin:0;font-size:.9rem;color:var(--tx);word-break:break-word}
+  .pill{display:inline-block;font-size:.68rem;font-weight:700;letter-spacing:.1em;
+    text-transform:uppercase;padding:.25rem .62rem;border-radius:2px}
+  .p-high{background:rgba(224,110,90,.16);color:#F0A18C;border:1px solid rgba(224,110,90,.38)}
+  .p-med{background:rgba(224,163,74,.16);color:#E8BE83;border:1px solid rgba(224,163,74,.38)}
+  .p-low{background:rgba(76,175,130,.16);color:#8FD3B4;border:1px solid rgba(76,175,130,.38)}
+  .draft{background:var(--n-950);border:1px solid var(--hair);border-left:2px solid var(--gold);
+    border-radius:var(--r);padding:1.2rem 1.3rem;white-space:pre-wrap;
+    font-size:.9rem;color:var(--tx-2);line-height:1.7}
+  .gaps{display:flex;flex-direction:column;gap:.5rem}
+  .gaps li{background:rgba(224,163,74,.08);border:1px solid rgba(224,163,74,.26);
+    border-radius:var(--r-sm);padding:.7rem .9rem;font-size:.84rem;color:#E8BE83;line-height:1.55}
+  .gaps li.ok{background:rgba(76,175,130,.08);border-color:rgba(76,175,130,.26);color:#8FD3B4}
+  .sub-h{font-family:var(--serif);font-size:1.3rem;font-weight:300;letter-spacing:-.02em;
+    margin:2.2rem 0 1rem}
+  @media(max-width:600px){.kv>div{grid-template-columns:1fr;gap:.15rem;padding:.7rem 0}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav" id="nav">
+ <div class="wrap nav-in">
+  <a class="wordmark" href="../index.html" aria-label="TRL home">
+   <span class="wm-mark">TRL</span><span class="wm-dot" aria-hidden="true"></span>
+   <span class="wm-txt">The Right Lifestyle</span>
+  </a>
+  <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu">
+   <span></span><span></span><span></span>
+  </button>
+  <nav class="nav-links" id="menu" aria-label="Main">
+   <a href="../index.html">Home</a>
+   <a href="../services.html">Services</a>
+   <a href="../portfolio.html">Work</a>
+   <a href="../how-we-work.html">Process</a>
+   <a href="../about.html">About</a>
+   <a class="btn btn-sm btn-gold nav-cta" href="../contact.html">Connect</a>
+  </nav>
+ </div>
+</header>
+
+<main id="main">
+<section class="phero">
+ <div class="wrap phero-in">
+  <p class="eyebrow">Demonstration · working prototype</p>
+  <h1 class="d2">Enquiry triage &amp; routing</h1>
+  <p class="lead">Paste a customer enquiry. This prototype extracts the key fields, assigns a priority, suggests a route and drafts a reply for a human to approve — the first building block of a follow-up system.</p>
+ </div>
+</section>
+
+<section class="sec sec-tight">
+ <div class="wrap" style="max-width:980px">
+  <div class="panel">
+   <div class="panel-head">
+    <b>Triage prototype</b>
+    <span class="label demo">Demonstration</span>
+   </div>
+   <div class="panel-body">
+    <label for="msg" style="display:block;font-size:.7rem;letter-spacing:.13em;
+      text-transform:uppercase;color:var(--tx-4);font-weight:700;margin-bottom:.7rem">
+      Customer enquiry</label>
+    <textarea id="msg" class="ta" placeholder="Paste a WhatsApp or email enquiry here…"></textarea>
+    <div class="samples">
+     <span class="lbl">Sample</span>
+     <button type="button" data-s="0">Urgent — order issue</button>
+     <button type="button" data-s="1">Price question</button>
+     <button type="button" data-s="2">Partnership enquiry</button>
+     <button type="button" id="clear">Clear</button>
+    </div>
+    <div class="btn-row" style="margin-top:1.5rem">
+     <button type="button" class="btn btn-blue" id="run">Process enquiry</button>
+    </div>
+
+    <div class="out" id="out" aria-live="polite">
+     <h2 class="sub-h">Structured record</h2>
+     <dl class="kv" id="kv"></dl>
+     <h2 class="sub-h">Draft reply for approval</h2>
+     <div class="draft" id="draft"></div>
+     <h2 class="sub-h">Gaps to confirm</h2>
+     <ul class="gaps" id="missed"></ul>
+    </div>
+   </div>
+  </div>
+
+  <p class="note info" style="margin-top:1.6rem">
+   <strong>Runs entirely in your browser.</strong> There is no server, no API call and no analytics.
+   Nothing you type is transmitted, stored or logged anywhere. Clear the box to remove it.
+  </p>
+
+  <div style="margin-top:3.4rem">
+   <p class="eyebrow">What this demonstrates</p>
+   <h2 style="margin-top:1.1rem">A first pass, made visible</h2>
+   <p class="lead" style="margin-top:1rem">The logic below is deliberately simple and visible — the kind of first pass a real system would apply before anything is handed to a person. In a live engagement this becomes a connected workflow: capture into a register, notify the right owner, track the follow-up date, and log the outcome.</p>
+   <ul class="spec" style="margin-top:1.6rem">
+    <li><b>Problem</b><span>Enquiries arrive as free text. Details are lost, follow-ups depend on memory, and nothing is recorded in a form you can act on later.</span></li>
+    <li><b>Approach</b><span>Structure the message into consistent fields, apply simple routing rules, produce a draft reply for human approval.</span></li>
+    <li><b>Deliverable</b><span>A working prototype plus the logic behind it.</span></li>
+    <li><b>Status</b><span>Demonstration. Not client work, not a measured result, and not a finished product.</span></li>
+   </ul>
+   <div class="btn-row" style="margin-top:2.2rem">
+    <a class="btn btn-line" href="../portfolio.html">Back to demonstrations</a>
+   </div>
+  </div>
+ </div>
+</section>
+</main>
+
+<footer class="foot">
+ <div class="wrap foot-base" style="border-top:0">
+  <span>&copy; <span id="yr">2026</span> TRL — The Right Lifestyle. Demonstration page.</span>
+  <span class="foot-legal"><a href="../privacy.html">Privacy</a><a href="../terms.html">Terms</a></span>
+ </div>
+</footer>
+
+<script src="../assets/js/main.js" defer></script>
+<script>
+(function(){
+  "use strict";
+  var SAMPLES = [
+    "Salam, I ordered 3 items on Friday, order #4471. Only 2 arrived and nobody is picking up the phone. I need the missing item by Thursday for an event. Please advise urgently. Ayesha Khan",
+    "Hi, do you build websites for small clinics? Roughly how much would a simple 5 page site cost and how long does it take? We are in Rawalpindi. Thanks, Bilal - Al Noor Dental",
+    "Hello, I run a small logistics company in Islamabad and I am interested in discussing a potential partnership for automation work across our branches. Could we set up a call next week to explore this?"
+  ];
+  var $ = function(id){ return document.getElementById(id); };
+  var ta = $("msg"), out = $("out"), kv = $("kv"), draft = $("draft"), missed = $("missed");
+
+  document.querySelectorAll(".samples button[data-s]").forEach(function(b){
+    b.addEventListener("click", function(){ ta.value = SAMPLES[+b.dataset.s]; ta.focus(); });
+  });
+  $("clear").addEventListener("click", function(){ ta.value=""; out.classList.remove("show"); ta.focus(); });
+  $("run").addEventListener("click", run);
+
+  function esc(s){ return String(s).replace(/[&<>"]/g, function(c){
+    return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
+
+  function run(){
+    var t = ta.value.trim();
+    if(!t){ alert("Paste or write an enquiry first."); return; }
+
+    var name = "Not detected";
+    var mName = t.match(/\b(?:this is|i am|i'm|regards,?|thanks,?)\s+([A-Z][a-z]+(?:\s+[A-Z][a-z]+)?)/);
+    if (mName) name = mName[1];
+    else { var tail = t.match(/\b([A-Z][a-z]{2,}\s+[A-Z][a-z]{2,})\s*[.,;]?\s*$/); if (tail) name = tail[1]; }
+
+    var biz = "Not stated";
+    var mBiz = t.match(/\b([A-Z][A-Za-z0-9&'.-]*(?:\s+[A-Z][A-Za-z0-9&'.-]*)*)\s+(?:Dental|Clinic|Logistics|Studio|Store|Shop|Group|Academy|Company|Enterprises|Consultants)\b/);
+    if (mBiz) biz = mBiz[0];
+
+    var intent = "General enquiry";
+    if (/order|deliver|arrived|missing|refund|ship/i.test(t)) intent = "Order or delivery issue";
+    else if (/how much|cost|price|quote|budget|charges?\b/i.test(t)) intent = "Pricing enquiry";
+    else if (/partnership|collaborat|joint|referral/i.test(t)) intent = "Partnership or commercial";
+    else if (/build|develop|automat|integrat|website|system/i.test(t)) intent = "Project or build request";
+
+    var urg = "Normal", pill = "p-low";
+    if (/urgent|asap|immediately|today|emergency|not picking up|no response/i.test(t)) { urg = "High"; pill = "p-high"; }
+    else if (/by (monday|tuesday|wednesday|thursday|friday|saturday|sunday)|this week|next week|deadline|soon/i.test(t)) { urg = "Medium"; pill = "p-med"; }
+
+    var route = "General queue — reply within the response window";
+    if (pill === "p-high") route = "Owner — immediate, same working day";
+    else if (intent === "Pricing enquiry") route = "Owner — send written scope and price";
+    else if (intent === "Partnership or commercial") route = "Owner — book a scoping call";
+    else if (intent === "Project or build request") route = "Owner — request requirements, then quote";
+
+    var refs = t.match(/(?:order|ref|ticket|inv)[\s#:-]*([A-Za-z0-9-]{3,})/gi);
+    var refTxt = refs ? refs.join(", ") : "None found";
+
+    var loc = "Not stated";
+    var mLoc = t.match(/\b(Islamabad|Rawalpindi|Karachi|Lahore|Peshawar|Faisalabad|Multan|Quetta|Pakistan)\b/i);
+    if (mLoc) loc = mLoc[1];
+
+    kv.innerHTML =
+      row("Contact name", name) + row("Business", biz) + row("Intent", intent) +
+      row("Urgency", '<span class="pill ' + pill + '">' + urg + "</span>") +
+      row("Reference", refTxt) + row("Location", loc) + row("Suggested route", route) +
+      row("Received", new Date().toLocaleString("en-GB", {dateStyle:"medium", timeStyle:"short"}));
+
+    var first = (name !== "Not detected") ? name.split(" ")[0] : "there";
+    draft.textContent =
+      "Salam " + first + ",\n\n" +
+      "Thank you for getting in touch.\n\n" +
+      "I have logged your enquiry" + (refs ? " (reference: " + refs[0] + ")" : "") +
+      " and I am looking into it now.\n\n" +
+      (pill === "p-high"
+        ? "I will come back to you within the hour with a concrete update.\n\n"
+        : "I will confirm the details and revert within one working day.\n\n") +
+      "If anything else is relevant in the meantime, just reply here.\n\n" +
+      "Regards,\nRashid\nTRL — The Right Lifestyle";
+
+    var gaps = [];
+    if (name === "Not detected") gaps.push("Contact name — needed to personalise and file the record.");
+    if (biz === "Not stated") gaps.push("Business name — needed to link this to an existing account or lead.");
+    if (!refs && intent === "Order or delivery issue") gaps.push("Order reference — required to trace the order.");
+    if (loc === "Not stated") gaps.push("Location — affects delivery options and whether a visit is possible.");
+    if (!gaps.length) gaps.push("No critical gaps. Confirm the record before filing it.");
+    missed.innerHTML = gaps.map(function(g,i){
+      return '<li class="' + (gaps.length===1 && i===0 ? 'ok' : '') + '">' + esc(g) + '</li>';
+    }).join("");
+
+    out.classList.add("show");
+    out.scrollIntoView({behavior:"smooth", block:"nearest"});
+  }
+  function row(k, v){ return "<div><dt>" + esc(k) + "</dt><dd>" + v + "</dd></div>"; }
+  var yr = document.getElementById("yr"); if (yr) yr.textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>

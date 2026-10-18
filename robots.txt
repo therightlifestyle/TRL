@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Update the host line below once the final public URL is confirmed.
+# Sitemap: https://therightlifestyle.github.io/TRL/sitemap.xml
