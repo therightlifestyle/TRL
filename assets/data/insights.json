@@ -1,0 +1,112 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-10-19",
+  "articles": [
+    {
+      "id": "founder-is-the-system",
+      "title": "Most small businesses do not have a technology problem",
+      "category": "Business",
+      "date": "2026-09-18",
+      "readTime": 6,
+      "tags": ["process", "founder", "systems"],
+      "summary": "The bottleneck is usually a person who knows too much, not a tool that is too slow. Fixing the knowledge first changes which software you should even buy.",
+      "featured": true,
+      "body": [
+        "When a business owner describes their situation, they usually reach for a tool: we need a CRM, we need accounting software, we need to hire somebody. But look at the actual work and something else shows up — one person knows which customer is serious, which order was actually paid for, and which supplier will answer the phone. The business runs on that knowledge, and it is not written anywhere.",
+        "That is the real constraint. It is also invisible from the outside, because the person holding the knowledge is usually the same person who is doing the work, and they genuinely believe it is all obvious.",
+        "The consequence is that automation programmes start in the wrong place. You automate a step that nobody fully understood, and the workflow faithfully reproduces the confusion. Or you buy a platform to hold data the business still cannot explain to itself.",
+        "So the first piece of work in almost every engagement we take is not a build. It is a short, uncomfortable conversation about what actually happens between an enquiry arriving and a reply going out, written down step by step, including the judgement calls.",
+        "Only then does the tool question become answerable. Sometimes the answer is a spreadsheet with three tabs and a WhatsApp group. Sometimes it is a proper platform. Often the answer is that the process was fine and the handover was the problem.",
+        "The test we use is simple: could a competent new hire read the process and do the work without asking the founder? If the answer is no, the system is the founder, and the founder is the risk."
+      ]
+    },
+    {
+      "id": "automation-worth-it",
+      "title": "How to tell if a process is worth automating",
+      "category": "Automation",
+      "date": "2026-08-30",
+      "readTime": 7,
+      "tags": ["automation", "prioritisation", "roi"],
+      "summary": "Five questions that filter out the work that looks automatable but never pays for the build — including the case where doing nothing is the correct answer.",
+      "featured": true,
+      "body": [
+        "There is a version of every automation pitch that sounds good and works badly. The process is described in one sentence, the demo is smooth, and the build takes four times as long as expected because the real process has eleven exceptions that nobody mentioned.",
+        "A better filter starts with repetition. If the work happens on a schedule and follows the same rules, automation is usually straightforward. If it happens irregularly and depends on reading the room, a template and a checklist will usually beat a workflow.",
+        "Second: does the work have a clean trigger and a clean output? Enquiry to structured record is a good candidate. “Decide whether to grant a discount” is not, however good the model is.",
+        "Third: is the volume high enough to matter? A task that costs twenty minutes a week is rarely worth a build, a maintenance burden and a thing that can break at 2am.",
+        "Fourth: what happens when it fails? If a failure is silent, the economics change completely — you will spend more time watching the automation than you saved running the manual step. Design for alerts and a rollback before you build.",
+        "Fifth, and the one most skipped: what should not be automated? Some work should stay manual because it is where the business shows its judgement, where the customer relationship is won, or where the rules are still changing every month.",
+        "In our own opportunity model there is a whole quadrant labelled leave alone. We think that quadrant is what makes the other three credible."
+      ]
+    },
+    {
+      "id": "enquiry-response-time",
+      "title": "The reply speed nobody measures",
+      "category": "Systems",
+      "date": "2026-08-11",
+      "readTime": 5,
+      "tags": ["response time", "enquiries", "sla"],
+      "summary": "Most businesses have no idea how long it takes them to reply to a first enquiry — and that number predicts conversion better than most marketing changes.",
+      "featured": false,
+      "body": [
+        "Ask a business how quickly they reply to enquiries and you will usually get an estimate: same day, maybe a couple of hours. Ask them to look at the actual timestamps and the picture is usually less flattering.",
+        "The number matters because the first reply is doing most of the work. A customer who writes to three suppliers and gets one reply within the hour has effectively been chosen before the others answer.",
+        "The measurement itself is easy and almost nobody does it. Timestamp the first message, timestamp the first human reply, and record the difference. One week of data is enough to show whether the problem is the channel, the process, or the person who owns it.",
+        "When it is the person, the fix is a routing rule and an SLA clock, not a reminder. When it is the process — enquiries sitting in a shared inbox nobody owns — the fix is ownership. When it is the channel, automation is usually enough.",
+        "The useful part of this measurement is not the average. It is the tail. The median enquiry might be answered in three hours while a meaningful slice waits until tomorrow, and those are usually your larger customers, because bigger customers write longer messages that take longer to answer properly.",
+        "Answer the first message quickly, even if the full answer takes longer. A one-line acknowledgement with an honest timeframe beats a perfect reply that arrives after the customer has already bought elsewhere."
+      ]
+    },
+    {
+      "id": "handover-done-properly",
+      "title": "Handover is a deliverable, not an email",
+      "category": "TRL Notes",
+      "date": "2026-07-22",
+      "readTime": 6,
+      "tags": ["handover", "ownership", "documentation"],
+      "summary": "The end of a project decides whether the client is independent or dependent on us. Here is the checklist we hand over against.",
+      "featured": false,
+      "body": [
+        "Most systems fail after delivery, not during it. The build works, the demo goes well, and six months later a small change requires the contractor who built it. That dependency was usually designed in from the start, often without anyone deciding it.",
+        "A proper handover is a small project of its own. It covers accounts, credentials, source code, documentation, running instructions, and the parts of the system that are deliberately manual.",
+        "Our checklist: every account is owned by the client; every credential is in the client's password manager and nowhere else; the documentation explains what the system does and how to change it; there is a runbook for the things that break; and there is a walkthrough with the person who will actually operate it.",
+        "The uncomfortable part is that a handover also means the client can take the system in a direction we would not choose. That is the point. A system the owner controls is worth more than a perfect system the owner is afraid to touch.",
+        "We would rather be re-hired for being good than kept hired for being difficult to leave."
+      ]
+    },
+    {
+      "id": "ai-without-hype",
+      "title": "Where AI actually helps in a small business",
+      "category": "Automation",
+      "date": "2026-06-30",
+      "readTime": 8,
+      "tags": ["ai", "reality", "automation"],
+      "summary": "The useful AI features in a small business are unglamorous: drafting, summarising, extracting and routing. Here is what works, what does not, and what it costs.",
+      "featured": false,
+      "body": [
+        "The interesting AI in a small business is almost never a chatbot on the website. It is much closer to clerical work: turning a messy message into a record, drafting a reply, summarising a thread, checking a document, deciding where a request should go.",
+        "These tasks share three properties. The output is checkable. The cost of a mistake is bounded. And a person already does them today, slowly, which means there is a baseline to improve on.",
+        "What does not work is automation of judgement. Letting a model decide a pricing exception, or answer a complaint in a voice the business has not defined, adds risk in exactly the place where the customer relationship is most fragile.",
+        "The cost picture is usually more favourable than people expect, because the expensive part of an AI feature is rarely the inference. It is the review step, the integration and the monitoring. That is why the honest answer to most AI questions is the same: start with one workflow where the output is structured and checkable, measure what it returns, and only then widen.",
+        "The failure mode we watch for is the demo that replaces a process without replacing the accountability behind it. The workflow gets faster, the errors get less visible, and the client discovers a month later that nothing was actually being verified."
+      ]
+    },
+    {
+      "id": "brief-before-quote",
+      "title": "Write the brief before the quote",
+      "category": "Business",
+      "date": "2026-05-14",
+      "readTime": 5,
+      "tags": ["scoping", "quotation", "process"],
+      "summary": "A quotation is a promise about an agreed description of work. If the description is vague, the promise cannot be honest — and the conflict arrives with the first invoice.",
+      "featured": false,
+      "body": [
+        "Most disputes we would have avoided started with a quotation that was technically accurate and practically meaningless. The scope said something like build an enquiry system, without saying which enquiries, who reads them, what happens when the classification is wrong, or what the client does while it is being built.",
+        "A brief fixes this by forcing the awkward questions before the money moves. What actually happens today, how often, who does it, what does it cost when it goes wrong, and what happens if we do nothing.",
+        "The client does not have to have good answers. They have to answer honestly, including the parts they are not sure about. Uncertainty in a brief is fine — it is useful information, and it belongs in the scope rather than in a change request three weeks in.",
+        "The other benefit is speed. A client who has written down the problem stops sending long explanatory messages, because the shared document already holds it. Both sides end up spending less time in meetings and more time deciding.",
+        "We have added a brief builder to the Console so a business can produce a structured version of this in a few minutes, entirely in the browser, before contacting anyone."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: trl-api
+    runtime: node
+    plan: free
+    rootDir: .
+    buildCommand: ""
+    startCommand: node server/src/index.mjs
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: NODE_ENV
+        value: production
+      - key: ADMIN_TOKEN
+        generateValue: true
+      - key: CORS_ORIGINS
+        sync: false
+      - key: DATA_DIR
+        value: /var/data
+    disk:
+      name: trl-data
+      mountPath: /var/data
+      sizeGB: 1

@@ -1,0 +1,152 @@
+/* =============================================================================
+   TRL — The Right Lifestyle
+   Layer 1 / tokens.css — design tokens, themes, typography scale, primitives
+   Every value used across the system is declared here. No magic numbers in
+   component layers.
+   ============================================================================= */
+
+/* ------------------------------------------------------------------ fonts */
+@font-face{font-family:"Newsreader";font-style:normal;font-weight:300 700;font-display:swap;
+  src:url("../fonts/newsreader-normal-latin.woff2") format("woff2");
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:"Newsreader";font-style:normal;font-weight:300 700;font-display:swap;
+  src:url("../fonts/newsreader-normal-latin-ext.woff2") format("woff2");
+  unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DE-02FF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}
+@font-face{font-family:"Newsreader";font-style:italic;font-weight:300 700;font-display:swap;
+  src:url("../fonts/newsreader-italic-latin.woff2") format("woff2");
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:"Manrope";font-style:normal;font-weight:300 800;font-display:swap;
+  src:url("../fonts/manrope-normal-latin.woff2") format("woff2");
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:"Manrope";font-style:normal;font-weight:300 800;font-display:swap;
+  src:url("../fonts/manrope-normal-latin-ext.woff2") format("woff2");
+  unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+1D00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}
+
+/* ------------------------------------------------------------------ theme */
+:root{
+  color-scheme:dark;
+
+  /* surfaces — deep navy, layered */
+  --ink:#03080F;
+  --n-1000:#040B14;
+  --n-950:#061120;
+  --n-900:#0A1830;
+  --n-850:#0D1E39;
+  --n-800:#112744;
+  --n-700:#17375F;
+
+  /* accents */
+  --gold:#C9A227;
+  --gold-lt:#E0C368;
+  --gold-dim:rgba(201,162,39,.32);
+  --blue:#5B9DFF;
+  --blue-lt:#8FC0FF;
+  --blue-dim:rgba(91,157,255,.22);
+  --green:#4CAF82;
+  --green-dim:rgba(76,175,130,.18);
+  --amber:#E0A34A;
+  --amber-dim:rgba(224,163,74,.18);
+  --red:#E06E5A;
+  --red-dim:rgba(224,110,90,.18);
+
+  /* text */
+  --tx:#EEF4FB;
+  --tx-2:#B9C9DE;
+  --tx-3:#8497B3;
+  --tx-4:#7A8FB0;
+
+  /* lines & surfaces */
+  --hair:rgba(255,255,255,.075);
+  --hair-2:rgba(255,255,255,.13);
+  --hair-3:rgba(255,255,255,.22);
+  --surf:rgba(255,255,255,.026);
+  --surf-2:rgba(255,255,255,.045);
+  --glass:rgba(6,17,32,.72);
+  --glass-2:rgba(10,24,48,.66);
+
+  /* type */
+  --serif:"Newsreader",Georgia,"Times New Roman",serif;
+  --sans:"Manrope","Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+  --mono:"SFMono-Regular",ui-monospace,"JetBrains Mono",Menlo,Consolas,monospace;
+
+  --fs-display:clamp(2.7rem,6.2vw,5.1rem);
+  --fs-d2:clamp(2.1rem,4.4vw,3.4rem);
+  --fs-h2:clamp(1.8rem,3.2vw,2.75rem);
+  --fs-h3:clamp(1.14rem,1.7vw,1.38rem);
+  --fs-lead:clamp(1.02rem,1.32vw,1.18rem);
+  --fs-body:1rem;
+  --fs-sm:.9rem;
+  --fs-xs:.8rem;
+  --fs-label:.7rem;
+
+  /* rhythm */
+  --sp-1:.4rem; --sp-2:.7rem; --sp-3:1.1rem; --sp-4:1.6rem;
+  --sp-5:2.4rem; --sp-6:3.4rem; --sp-7:4.6rem;
+  --sec:clamp(4rem,8vw,7.6rem);
+  --wrap:1240px;
+  --wrap-wide:1440px;
+  --gut:clamp(1.15rem,4vw,2.6rem);
+
+  /* radii */
+  --r-sm:3px; --r:6px; --r-lg:10px; --r-xl:16px; --r-pill:999px;
+
+  /* motion */
+  --ease:cubic-bezier(.22,.68,.32,1);
+  --ease-soft:cubic-bezier(.4,.01,.2,1);
+  --dur:.35s;
+
+  /* depth */
+  --shadow:0 28px 70px -24px rgba(0,0,0,.72);
+  --shadow-sm:0 10px 30px -12px rgba(0,0,0,.6);
+  --shadow-lg:0 50px 120px -40px rgba(0,0,0,.85);
+  --glow-gold:0 14px 40px -14px rgba(201,162,39,.5);
+  --glow-blue:0 14px 40px -14px rgba(91,157,255,.45);
+
+  /* z-index scale */
+  --z-nav:80; --z-drawer:90; --z-toast:140; --z-modal:120; --z-skip:200;
+}
+
+/* ------------------------------------------------------------------ light */
+html[data-theme="light"]{
+  color-scheme:light;
+
+  --ink:#FFFFFF;
+  --n-1000:#F7F9FC;
+  --n-950:#FFFFFF;
+  --n-900:#EFF3F8;
+  --n-850:#E4EBF3;
+  --n-800:#D3DEEB;
+  --n-700:#B7C7DB;
+
+  --gold:#966F13;
+  --gold-lt:#7A5A0B;
+  --gold-dim:rgba(150,111,19,.2);
+  --blue:#1A62D2;
+  --blue-lt:#13509F;
+  --blue-dim:rgba(26,98,210,.16);
+  --green:#1E7A56;
+  --green-dim:rgba(30,122,86,.14);
+  --amber:#A96A12;
+  --amber-dim:rgba(169,106,18,.14);
+  --red:#B93F2B;
+  --red-dim:rgba(185,63,43,.12);
+
+  --tx:#091424;
+  --tx-2:#24364D;
+  --tx-3:#52647C;
+  --tx-4:#6B7C93;
+
+  --hair:rgba(9,20,36,.09);
+  --hair-2:rgba(9,20,36,.16);
+  --hair-3:rgba(9,20,36,.26);
+  --surf:rgba(9,20,36,.022);
+  --surf-2:rgba(9,20,36,.045);
+  --glass:rgba(255,255,255,.82);
+  --glass-2:rgba(247,249,252,.78);
+
+  --shadow:0 24px 60px -22px rgba(9,20,36,.16);
+  --shadow-sm:0 8px 24px -12px rgba(9,20,36,.12);
+  --shadow-lg:0 44px 100px -40px rgba(9,20,36,.28);
+  --glow-gold:0 14px 40px -16px rgba(150,111,19,.35);
+  --glow-blue:0 14px 40px -16px rgba(26,98,210,.3);
+}

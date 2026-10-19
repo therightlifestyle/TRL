@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TRL Console — working systems you can open · TRL — The Right Lifestyle</title>
+<meta name="description" content="The TRL Console: a working enquiry triage engine, automation opportunity model, system blueprint, scope brief builder, enquiry pipeline and assistant — running in your browser.">
+<link rel="canonical" href="https://therightlifestyle.github.io/TRL/console/index.html">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#040B14">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../assets/fonts/manrope-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/newsreader-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../assets/css/tokens.css">
+<link rel="stylesheet" href="../assets/css/base.css">
+<link rel="stylesheet" href="../assets/css/components.css">
+<link rel="stylesheet" href="../assets/css/pages.css">
+<link rel="stylesheet" href="../assets/css/console.css">
+<script>(function(){try{var t=localStorage.getItem('trl-theme');if(t==='light'){document.documentElement.setAttribute('data-theme','light');}}catch(e){}})();</script>
+</head>
+<body data-page="console" class="console-body">
+<a class="skip" href="#con-main">Skip to content</a>
+
+<header class="nav" id="nav">
+ <div class="wrap nav-in">
+  <a class="wordmark" href="../index.html" aria-label="TRL — The Right Lifestyle, home">
+   <span class="wm-mark">TRL</span><span class="wm-dot" aria-hidden="true"></span>
+   <span class="wm-txt">The Right Lifestyle</span>
+  </a>
+  <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu">
+   <span></span><span></span><span></span>
+  </button>
+  <nav class="nav-links" id="menu" aria-label="Main">
+   <a href="../index.html">Home</a>
+   <a href="../services.html">Services</a>
+   <a href="../work.html">Work</a>
+   <a href="../insights.html">Insights</a>
+   <a href="../how-we-work.html">Process</a>
+   <a href="../about.html">About</a>
+   <a class="btn btn-sm btn-gold nav-cta" href="../contact.html">Connect</a>
+   <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to light theme" title="Switch to light theme">
+    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+   </button>
+  </nav>
+ </div>
+</header>
+
+<div class="con-shell">
+ <aside class="con-rail">
+  <h6>Workspace</h6>
+  <nav class="con-nav" aria-label="Console sections">
+   <button type="button" data-view="triage" aria-current="true">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a4 4 0 0 0-4 4v1a3 3 0 0 0 0 6v1a4 4 0 0 0 8 0v-1a3 3 0 0 0 0-6V7a4 4 0 0 0-4-4Z"/><path d="M8 8h8M8 16h8M12 8v8"/></svg>
+    Triage engine</button>
+   <button type="button" data-view="pipeline">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 13h5l1.5 3h5L16 13h5"/><path d="M5.4 4.6 3 13v5.5A1.5 1.5 0 0 0 4.5 20h15a1.5 1.5 0 0 0 1.5-1.5V13l-2.4-8.4A1.9 1.9 0 0 0 16.8 3H7.2a1.9 1.9 0 0 0-1.8 1.6Z"/></svg>
+    Enquiry pipeline</button>
+   <button type="button" data-view="blueprint">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 2.8 9 4.6-9 4.6-9-4.6z"/><path d="m3 12.6 9 4.6 9-4.6M3 17.4l9 4.6 9-4.6"/></svg>
+    System blueprint</button>
+   <button type="button" data-view="roi">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>
+    Opportunity model</button>
+   <button type="button" data-view="brief">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2.5H7.4A1.9 1.9 0 0 0 5.5 4.4v15.2a1.9 1.9 0 0 0 1.9 1.9h9.2a1.9 1.9 0 0 0 1.9-1.9V7.2z"/><path d="M14 2.5v4.7h4.8M9 13h6M9 16.6h4"/></svg>
+    Scope brief</button>
+   <button type="button" data-view="assistant">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.6a1.8 1.8 0 0 1-1.8 1.8H7.6L3.5 20.4V5.6a1.8 1.8 0 0 1 1.8-1.8h13.4a1.8 1.8 0 0 1 1.8 1.8z"/><path d="M8 9h8M8 12.4h5"/></svg>
+    Assistant</button>
+   <button type="button" data-view="work">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.4"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.4"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.4"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.4"/></svg>
+    Demonstrations</button>
+  </nav>
+  <div class="rail-foot">
+   <b>How this works</b>
+   Every module runs in your browser against the same engines the TRL API uses. Nothing you type is transmitted or stored on a server. Records you create stay in this browser.
+  </div>
+ </aside>
+
+ <main class="con-main" id="con-main">
+  <div class="con-head">
+   <div>
+    <h1>TRL Console</h1>
+    <p>Loading the workspace…</p>
+   </div>
+  </div>
+ </main>
+</div>
+
+<script type="module" src="../assets/js/main.js"></script>
+</body>
+</html>

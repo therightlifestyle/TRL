@@ -1,0 +1,214 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-10-19",
+  "entries": [
+    {
+      "id": "services-overview",
+      "title": "What TRL does",
+      "question": "What services does TRL provide?",
+      "starter": true,
+      "keywords": ["services", "what do you do", "offer", "capabilities", "help", "disciplines"],
+      "tags": ["services"],
+      "answer": "TRL works across seven practical disciplines: AI and automation; websites and digital products; research and business information; business strategy and documentation; marketing, branding and content; software and integrations; and consultation.\n\nWe start from the friction in the business rather than the tool being considered, which is why the work regularly spans more than one discipline.",
+      "url": "services.html",
+      "followUps": ["How much does an engagement cost?", "How long does a project take?", "Who owns the work at handover?"]
+    },
+    {
+      "id": "service-ai",
+      "title": "AI and automation",
+      "question": "Can you automate our repetitive work?",
+      "starter": true,
+      "keywords": ["ai", "automation", "automate", "workflow", "bot", "manual", "repetitive", "rpa", "intelligence"],
+      "tags": ["services", "ai"],
+      "answer": "Yes — that is the discipline we are known for. Typical work includes enquiry intake and routing, AI-assisted drafting with a human approval step, integrations between existing tools, and scheduled background jobs such as digests, reminders and reconciliations.\n\nWe automate the repeatable, not the responsible. Anything that requires judgement or accountability stays with a person, and every workflow ships with documented failure modes and an alert.",
+      "url": "services.html#ai-automation",
+      "followUps": ["How do you decide what to automate?", "What does an automation cost?"]
+    },
+    {
+      "id": "service-web",
+      "title": "Websites and digital products",
+      "question": "Can you build our website?",
+      "keywords": ["website", "web", "landing", "page", "ecommerce", "shop", "portal", "redesign", "seo", "hosting", "domain"],
+      "tags": ["services", "web"],
+      "answer": "Yes. We build company websites, landing pages, client portals and small scoped digital products.\n\nThe stack is self-hosted and dependency-light: no template lock-in, no tracking, and the source, hosting and domains are yours. We start with structure and content, then design, then build — and we wire the enquiry capture into the inbox your team already uses rather than a form nobody checks.",
+      "url": "services.html#websites-digital",
+      "followUps": ["How long does a website take?", "Who owns the code?"]
+    },
+    {
+      "id": "service-research",
+      "title": "Research and business information",
+      "question": "Can you research the market for us?",
+      "keywords": ["research", "market", "competitor", "competitors", "intelligence", "feasibility", "analysis", "data", "pricing landscape"],
+      "tags": ["services", "research"],
+      "answer": "Yes. We produce competitor audits, market maps, tooling evaluations and structured feasibility briefs.\n\nEach engagement is fixed-fee and typically runs 5–10 working days. You receive the written brief and the raw research files, so nothing is locked in.",
+      "url": "services.html#research-intelligence",
+      "followUps": ["How much does research cost?", "Do you work on a retainer?"]
+    },
+    {
+      "id": "service-strategy",
+      "title": "Business strategy and documentation",
+      "question": "Can you document how our business works?",
+      "keywords": ["documentation", "sop", "process", "manual", "strategy", "operating", "handbook", "onboarding", "knowledge"],
+      "tags": ["services", "strategy"],
+      "answer": "Yes, and it is often the most valuable thing we do.\n\nWe map the process as it actually runs, write standard operating procedures and decision logs, define ownership and escalation, and produce a handover pack a new hire can follow on day one.\n\nThe test we work to: a competent new hire should be able to follow the documentation without asking the founder.",
+      "url": "services.html#strategy-documentation",
+      "followUps": ["What does handover include?", "How do you handle sensitive process detail?"]
+    },
+    {
+      "id": "service-marketing",
+      "title": "Marketing, branding and content",
+      "question": "Do you handle marketing and branding?",
+      "keywords": ["marketing", "brand", "branding", "content", "campaign", "funnel", "social", "seo", "copywriting"],
+      "tags": ["services", "marketing"],
+      "answer": "Yes — brand materials, content systems, landing pages, lead capture funnels and automated follow-up sequences.\n\nWe are honest about the limit: we are not a volume content production house. We build the system and the assets so publishing becomes a routine rather than an event.",
+      "url": "services.html#marketing-content",
+      "followUps": ["Do you do work monthly?", "Can you write our website copy?"]
+    },
+    {
+      "id": "service-software",
+      "title": "Software and integrations",
+      "question": "Can you integrate our existing tools?",
+      "keywords": ["integration", "integrate", "api", "webhook", "script", "custom", "spreadsheet", "google sheets", "excel", "connector", "zapier", "n8n", "make"],
+      "tags": ["services", "software"],
+      "answer": "Yes. We build connectors, API integrations, spreadsheet automations and one-off scripts that remove the manual step between two systems.\n\nThe rule is that we integrate around what you already own rather than replacing it. Everything is delivered with error handling, logging, documentation and a rollback plan.",
+      "url": "services.html#software-integrations",
+      "followUps": ["Do you charge for maintenance?", "Which tools do you work with?"]
+    },
+    {
+      "id": "service-consultation",
+      "title": "Consultation and direction",
+      "question": "Can you just advise us?",
+      "keywords": ["consult", "consultation", "advice", "advisory", "guidance", "direction", "fractional", "second opinion", "review"],
+      "tags": ["services", "consultation"],
+      "answer": "Yes. Sometimes the correct engagement is advice rather than a build.\n\nA consultation is a structured diagnostic of the real operating problem, a written recommendation with options and trade-offs, vendor evaluation criteria and a shortlist, and architecture advice for the tools you already have.\n\nIf the honest answer is that you do not need what you asked for, that is the answer you get.",
+      "url": "services.html#consultation",
+      "followUps": ["How does a consultation start?", "What does it cost?"]
+    },
+    {
+      "id": "pricing-audit",
+      "title": "The Rapid AI Opportunity Audit",
+      "question": "How much does the audit cost?",
+      "starter": true,
+      "keywords": ["price", "pricing", "cost", "fee", "rates", "how much", "quote", "quotation", "budget", "audit", "expensive", "cheap"],
+      "tags": ["pricing"],
+      "answer": "The Rapid AI Opportunity Audit is a fixed PKR 3,000 — one price, no tiers, published.\n\nYou receive a written map of where time is actually lost, a prioritised matrix of automation candidates ranked by impact against effort, an implementation roadmap with recommended tooling, and a walkthrough call. Delivery is within 72 hours of confirmed payment, with a seven-day adjustment window.\n\nThe fee is not credited against a later build and there is no obligation to continue. Beyond the audit, larger work is quoted per scope.",
+      "url": "services.html#audit",
+      "followUps": ["What happens after the audit?", "How do larger projects get priced?"]
+    },
+    {
+      "id": "process",
+      "title": "How an engagement runs",
+      "question": "How does an engagement start?",
+      "starter": true,
+      "keywords": ["process", "how does it work", "start", "stages", "steps", "engage", "onboard", "first step", "way of working"],
+      "tags": ["process"],
+      "answer": "Four stages, and the order matters.\n\n1. Conversation — an honest discussion about what is happening and what is causing the friction.\n2. Definition — the problem, scope, deliverables, timeline and success criteria are written down and agreed before any build starts.\n3. Build — staged execution with visible progress and no black-box surprises.\n4. Handover — you get the deliverable, the documentation and a walkthrough, and the system runs without us.\n\nThe full engagement lifecycle has six stages including confirmation and review; the detail is on the process page.",
+      "url": "how-we-work.html",
+      "followUps": ["How long does each stage take?", "What do you need from us?"]
+    },
+    {
+      "id": "timeline",
+      "title": "Timelines and turnaround",
+      "question": "How long does a project take?",
+      "keywords": ["how long", "timeline", "duration", "turnaround", "fast", "quick", "deadline", "when", "delivery time", "speed"],
+      "tags": ["process", "timeline"],
+      "answer": "It depends on scope, and we will not pretend otherwise.\n\nThe audit is 72 hours. A focused single-workflow automation is usually 1–2 weeks. A website is typically 2–4 weeks. A multi-workflow systems engagement runs 6–10 weeks, often phased.\n\nConsultation engagements are 5–10 working days for research. If a project needs a date you have not mentioned, tell us early — the schedule is part of the scope, not something to discover in week three.",
+      "url": "how-we-work.html",
+      "followUps": ["What slows a project down?", "Do you work in phases?"]
+    },
+    {
+      "id": "handover",
+      "title": "Ownership and handover",
+      "question": "Who owns the work at handover?",
+      "starter": true,
+      "keywords": ["own", "ownership", "handover", "code", "ip", "intellectual property", "accounts", "credentials", "lock in", "lock-in", "source"],
+      "tags": ["process", "ownership"],
+      "answer": "You do — completely.\n\nAt handover you receive the source code, the documentation, the runbooks, the accounts, the credentials and a walkthrough. There is no dependency on us by design, and no proprietary platform holding your work hostage.\n\nWe do not mark clients as unserviceable if they later want to change something themselves, and we do not mark clients as un-serviceable if they take the work in a direction we would not have chosen.",
+      "url": "terms.html",
+      "followUps": ["Do you offer support after handover?", "What is your confidentiality position?"]
+    },
+    {
+      "id": "boundaries",
+      "title": "What TRL will not do",
+      "question": "What does TRL not do?",
+      "starter": true,
+      "keywords": ["not do", "won't", "will not", "boundaries", "no", "avoid", "refuse", "limits", "guarantees", "fake", "honest"],
+      "tags": ["trust", "process"],
+      "answer": "We are explicit about the boundaries, because they protect the work.\n\nWe do not fabricate credibility — no invented testimonials, no fictitious clients, no inflated results. We do not sell you software you do not need, and we do not take a retainer for work that does not need one. We do not keep your passwords in chat, and we do not send unsolicited bulk messages. We do not take on a project where we are not the right firm, and we will say so.\n\nIf a free tool solves the problem, we will tell you before you pay us.",
+      "url": "about.html",
+      "followUps": ["Who will I actually be working with?", "How do you price work?"]
+    },
+    {
+      "id": "founder",
+      "title": "Who you work with",
+      "question": "Who will I actually be working with?",
+      "keywords": ["who", "founder", "team", "rashid", "people", "staff", "company", "owner", "size", "employees"],
+      "tags": ["about"],
+      "answer": "TRL is founder-led by Rashid Muhammad, based in Islamabad, Pakistan, and deliberately small. The person you speak to at the start is the person doing the work at the end.\n\nWhere a project needs skills beyond our own — specialist design, very large infrastructure, regulated sectors — we say so before you commit, and we bring in a trusted partner rather than pretend.",
+      "url": "about.html",
+      "followUps": ["Where are you based?", "How do you work with clients outside Pakistan?"]
+    },
+    {
+      "id": "contact",
+      "title": "How to reach TRL",
+      "question": "How do I get in touch?",
+      "starter": true,
+      "keywords": ["contact", "reach", "email", "whatsapp", "phone", "call", "talk", "message", "get started", "book"],
+      "tags": ["contact"],
+      "answer": "The fastest route is WhatsApp: +92 319 0091457. Email is officialtrlservice@gmail.com.\n\nWe reply Monday to Saturday, 10:30–18:30 PKT. There is no form to fight with — send a message describing the problem and we will come back with an honest view on whether we are the right people for it.",
+      "url": "contact.html",
+      "followUps": ["What should I include in my first message?", "How fast do you reply?"]
+    },
+    {
+      "id": "pricing-models",
+      "title": "Engagement and pricing models",
+      "question": "How do you price larger projects?",
+      "keywords": ["pricing", "cost", "retainer", "monthly", "quote", "payment", "invoice", "scope", "fixed price", "time and materials"],
+      "tags": ["pricing"],
+      "answer": "Three routes.\n\nThe audit is fixed at PKR 3,000. Scoped builds are fixed price against a written scope, usually with staged payments tied to visible stages. Ongoing work is a monthly retainer, and only where the work is genuinely continuous.\n\nEvery quotation states the deliverables, the exclusions and the payment terms. Implementation work is quoted separately from audit work, and the audit fee is never credited against a later build — it is your document either way.",
+      "url": "services.html#pricing",
+      "followUps": ["What are the payment terms?", "What is excluded from a quote?"]
+    },
+    {
+      "id": "support",
+      "title": "Support after handover",
+      "question": "Do you support the system after handover?",
+      "keywords": ["support", "maintenance", "after", "ongoing", "retainer", "help", "fix", "updates", "fixes", "break"],
+      "tags": ["support"],
+      "answer": "Yes, and it is optional by design.\n\nMost clients keep a small monthly retainer for monitoring, workflow adjustments and improvements — usually a few hours a month with a response time agreed up front. Some clients take the documentation and run it themselves, and that is a perfectly good outcome.\n\nYou are never locked in. Every engagement is month-to-month on the retainer, and the notice period is short.",
+      "url": "how-we-work.html#support",
+      "followUps": ["What does the retainer include?", "What is your response time?"]
+    },
+    {
+      "id": "tools",
+      "title": "Tools we work with",
+      "question": "Which tools do you work with?",
+      "keywords": ["tools", "stack", "software", "apps", "platforms", "n8n", "zapier", "make", "google", "notion", "airtable", "whatsapp", "openai"],
+      "tags": ["tools"],
+      "answer": "We deliberately work with whatever the business already pays for.\n\nCommon choices: WhatsApp Business for customer messaging, Google Workspace for email, docs and sheets, Notion or Airtable for structured records, n8n or Make for workflow automation, Supabase for a small database, and the OpenAI API where AI is genuinely part of the workflow.\n\nWe are tool-agnostic by policy — the recommendation has to survive the question “what does this cost us in three years?”",
+      "url": "services.html",
+      "followUps": ["Do you replace our current tools?", "How do you choose the stack?"]
+    },
+    {
+      "id": "privacy",
+      "title": "Privacy and data handling",
+      "question": "What happens to our data?",
+      "keywords": ["privacy", "data", "security", "gdpr", "confidential", "confidentiality", "nda", "personal data", "leak", "retention"],
+      "tags": ["trust"],
+      "answer": "Your data stays yours. We do not resell it, train on it, or reuse it in another project.\n\nWe work under a confidentiality commitment, keep credentials in your accounts rather than ours, and delete working copies when the engagement closes unless you ask us to keep them. The full notice is on the privacy page.",
+      "url": "privacy.html",
+      "followUps": ["Can we sign an NDA?", "Do you use subcontractors?"]
+    },
+    {
+      "id": "console",
+      "title": "The TRL Console",
+      "question": "What is the TRL Console?",
+      "starter": true,
+      "keywords": ["console", "demo", "prototype", "tool", "live", "triage engine", "calculator", "pipeline", "assistant", "try"],
+      "tags": ["product"],
+      "answer": "The Console is a working set of the systems TRL builds, running in your browser: the enquiry triage engine, an automation opportunity model, the reference system architecture, a scope brief builder, an enquiry pipeline board, and an assistant that answers from TRL's own published information.\n\nEverything runs locally — nothing you type is transmitted or stored. It is the fastest way to judge how we think.",
+      "url": "console/index.html",
+      "followUps": ["How does the triage engine work?", "Can I use the brief builder for a real project?"]
+    }
+  ]
+}

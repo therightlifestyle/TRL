@@ -1,0 +1,43 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-10-19",
+  "brand": {
+    "name": "TRL",
+    "fullName": "TRL — The Right Lifestyle",
+    "tagline": "The right system changes everything.",
+    "founder": "Rashid Muhammad",
+    "founded": "2024",
+    "location": "Islamabad, Pakistan",
+    "timezone": "PKT (UTC+5)",
+    "hours": "Monday – Saturday, 10:30 to 18:30 PKT",
+    "email": "officialtrlservice@gmail.com",
+    "whatsapp": "923190091457",
+    "whatsappDisplay": "+92 319 0091457"
+  },
+  "audit": {
+    "name": "Rapid AI Opportunity Audit",
+    "price": 3000,
+    "currency": "PKR",
+    "turnaroundHours": 72,
+    "adjustmentWindowDays": 7,
+    "creditedAgainstBuild": false,
+    "deliverables": [
+      "Operational friction map",
+      "Prioritised automation matrix",
+      "Implementation roadmap with tooling and estimated ROI",
+      "30-minute walkthrough",
+      "15-minute question call"
+    ]
+  },
+  "engagement": {
+    "stages": ["Conversation", "Definition", "Confirmation", "Build", "Review", "Handover"],
+    "disciplines": 7,
+    "responseWindow": "Within one working day",
+    "revisions": "Small refinements are included in the handover week"
+  },
+  "site": {
+    "apiBase": "",
+    "storeVersion": 3,
+    "engineVersion": "1.2.0"
+  }
+}

@@ -1,0 +1,167 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-10-19",
+  "services": [
+    {
+      "id": "ai-automation",
+      "number": "01",
+      "icon": "ai",
+      "title": "AI & Automation",
+      "short": "Repetitive work that depends on one person remembering every step.",
+      "summary": "Enquiry routing, messaging flows, internal triaging, document summarisation and scheduled background jobs — the work that never stops because it never changes.",
+      "deliverables": [
+        "Enquiry intake with automatic classification, routing and SLA clocks",
+        "AI-assisted drafting with a human approval step before anything is sent",
+        "Integrations between the tools the business already pays for",
+        "Scheduled jobs: digests, reminders, reconciliations, exception reports",
+        "Runbook, failure modes and monitoring for every workflow shipped"
+      ],
+      "tools": ["n8n", "Make", "OpenAI API", "Google Apps Script", "WhatsApp Business", "Airtable", "Supabase"],
+      "outcomes": [
+        "Fewer enquiries waiting for a first reply",
+        "No double entry between systems",
+        "Every repeat task traceable and auditable"
+      ],
+      "engagement": "Fixed-scope build, staged with a demo at each stage",
+      "notFor": "Work that needs human judgement, taste or accountability. We automate the repeatable, not the responsible."
+    },
+    {
+      "id": "websites-digital",
+      "number": "02",
+      "icon": "monitor",
+      "title": "Websites & Digital Products",
+      "short": "A credible public presence that turns attention into enquiries.",
+      "summary": "Company websites, landing pages, client portals and small scoped digital products — built for conversion, speed and ownership rather than for a template.",
+      "deliverables": [
+        "Brand, structure and content architecture before any pixel work",
+        "Responsive build with Core Web Vitals in budget",
+        "Enquiry capture wired to the client's own inbox and pipeline",
+        "Self-hosted, no-tracking, no-lock-in stack",
+        "Documentation, deployment pipeline and handover training"
+      ],
+      "tools": ["HTML", "CSS", "Vanilla JS", "Netlify", "Cloudflare", "GitHub Actions"],
+      "outcomes": [
+        "A site that loads fast on a mid-range phone",
+        "Enquiries land where the team already works",
+        "Full source and hosting ownership on day one"
+      ],
+      "engagement": "Fixed scope, fixed price, staged demos",
+      "notFor": "Rebrands that need a full identity programme, or sites that need a content team to keep alive."
+    },
+    {
+      "id": "research-intelligence",
+      "number": "03",
+      "icon": "search",
+      "title": "Research & Market Intelligence",
+      "short": "Decisions made on evidence instead of assumptions.",
+      "summary": "Competitor audits, market mapping, tooling evaluations and structured feasibility briefs — so the decision is made once, on facts.",
+      "deliverables": [
+        "Competitor and pricing landscape with source links",
+        "Market sizing with stated assumptions",
+        "Tool evaluations against the business's actual constraints",
+        "Feasibility brief with a clear recommendation",
+        "Raw research files handed over, not just the summary"
+      ],
+      "tools": ["Web research", "Public data sources", "Spreadsheet modelling", "Written reporting"],
+      "outcomes": [
+        "A decision that does not need to be re-litigated later",
+        "Comparable quotes from real vendors",
+        "A shortlist that survives contact with reality"
+      ],
+      "engagement": "Fixed-fee research engagement, 5–10 working days",
+      "notFor": "Primary market research requiring paid databases, or anything needing a large sample survey."
+    },
+    {
+      "id": "strategy-documentation",
+      "number": "04",
+      "icon": "doc",
+      "title": "Business Strategy & Documentation",
+      "short": "Processes written down clearly enough to delegate.",
+      "summary": "Operating manuals, standard operating procedures, process documentation, decision logs and handover guides — the work that usually only lives in one person's head.",
+      "deliverables": [
+        "As-is process map with friction points marked",
+        "Standard operating procedures for the work that matters",
+        "Decision log: what was decided, when and why",
+        "Ownership and escalation matrix",
+        "Handover pack that a new hire can follow on day one"
+      ],
+      "tools": ["Notion", "Google Docs", "Diagrams", "Recorded walkthroughs"],
+      "outcomes": [
+        "The founder can take leave without the business stalling",
+        "New staff onboard faster and with fewer errors",
+        "Processes survive people leaving"
+      ],
+      "engagement": "Usually 1–3 week engagement, sometimes part of a build",
+      "notFor": "Strategy decks that will never be read or acted on."
+    },
+    {
+      "id": "marketing-content",
+      "number": "05",
+      "icon": "megaphone",
+      "title": "Marketing, Branding & Content",
+      "short": "A consistent message and a repeatable publishing rhythm.",
+      "summary": "Brand materials, content systems, lead capture funnels and automated follow-up sequences — so marketing stops depending on inspiration.",
+      "deliverables": [
+        "Message framework: who it is for and why they should care",
+        "Core brand assets and a one-page usage guide",
+        "Publishing calendar with production workflow",
+        "Landing pages wired to the enquiry pipeline",
+        "Follow-up sequences that sound like a person"
+      ],
+      "tools": ["Design tools", "Content systems", "Email automation", "Analytics"],
+      "outcomes": [
+        "Publishing that happens without heroics",
+        "Leads captured with context attached",
+        "Follow-up that is timely instead of pushy"
+      ],
+      "engagement": "Monthly retainer or a defined campaign build",
+      "notFor": "Volume content production for brands that need an in-house editorial team."
+    },
+    {
+      "id": "software-integrations",
+      "number": "06",
+      "icon": "code",
+      "title": "Software & Integrations",
+      "short": "Tools that talk to each other, and the specific job nothing handles.",
+      "summary": "Custom scripts, API connectors, spreadsheet automations and webhooks — the glue that removes the manual step between two systems that will never be replaced.",
+      "deliverables": [
+        "Integration design with error handling and retries",
+        "Custom scripts and webhooks with logging",
+        "Spreadsheet automations for Google Sheets and Excel",
+        "Documentation, credentials handover and a rollback plan",
+        "Monitoring so silent failures are caught"
+      ],
+      "tools": ["Node.js", "Python", "Google Apps Script", "REST APIs", "Webhooks", "Cron"],
+      "outcomes": [
+        "One entry, one source of truth",
+        "No re-keying between systems",
+        "Failures visible instead of silent"
+      ],
+      "engagement": "Scoped build, usually 1–4 weeks",
+      "notFor": "Replacing a system the business just paid to implement. We integrate around what you have."
+    },
+    {
+      "id": "consultation",
+      "number": "07",
+      "icon": "chat",
+      "title": "Consultation & Direction",
+      "short": "A clear-thinking outside view before money is spent.",
+      "summary": "Technical guidance, architecture advice, vendor evaluation and fractional systems leadership for owner-operated businesses that need clarity, not another contractor.",
+      "deliverables": [
+        "Structured diagnostic of the real operating problem",
+        "Written recommendation with options and trade-offs",
+        "Vendor evaluation criteria and shortlist",
+        "Architecture advice for tools the business already owns",
+        "Ongoing fractional leadership, if that is what is needed"
+      ],
+      "tools": ["Written advisory", "Working sessions", "Audits", "SOP review"],
+      "outcomes": [
+        "A decision that is yours to make",
+        "Fewer expensive wrong turns",
+        "A plan written in your language, not ours"
+      ],
+      "engagement": "Single sessions, the fixed-fee audit, or fractional advisory",
+      "notFor": "Advice we cannot stand behind. If the honest answer is “you do not need this”, that is the answer."
+    }
+  ]
+}
