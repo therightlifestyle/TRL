@@ -1,97 +1,106 @@
 <p align="center">
-  <img src="trl-banner.gif" alt="TRL — The Right Lifestyle: The right system changes everything. Practical business systems, AI solutions, and digital services." width="100%">
+  <img src="trl-banner.gif" alt="TRL — The Right Lifestyle: The right system changes everything." width="100%">
 </p>
 
 <p align="center">
-  <strong>Founder-led business systems, AI solutions &amp; digital services · Islamabad, Pakistan</strong>
+  <strong>Founder-led business systems, AI automation &amp; digital services · Islamabad, Pakistan</strong>
 </p>
 
 <p align="center">
   <a href="https://therightlifestyle.github.io/TRL/">🌐 Live Website</a>
   &nbsp;·&nbsp;
-  <a href="https://therightlifestyle.github.io/TRL/services.html">Services &amp; Capabilities</a>
+  <a href="https://therightlifestyle.github.io/TRL/services.html">Services</a>
   &nbsp;·&nbsp;
-  <a href="https://therightlifestyle.github.io/TRL/portfolio.html">Demonstrations &amp; Work</a>
+  <a href="https://therightlifestyle.github.io/TRL/work.html">Demonstrations</a>
   &nbsp;·&nbsp;
-  <a href="https://therightlifestyle.github.io/TRL/how-we-work.html">How We Work</a>
+  <a href="https://therightlifestyle.github.io/TRL/insights.html">Insights</a>
   &nbsp;·&nbsp;
-  <a href="https://therightlifestyle.github.io/TRL/about.html">About</a>
+  <a href="https://therightlifestyle.github.io/TRL/console/index.html">⚙️ TRL Console</a>
   &nbsp;·&nbsp;
   <a href="https://wa.me/923190091457">💬 WhatsApp</a>
-  &nbsp;·&nbsp;
-  <a href="mailto:officialtrlservice@gmail.com">✉️ Email</a>
 </p>
 
 ---
 
-## Meet the founder
+## What this repository is
 
-<p align="center">
-  <img src="og-image.png" alt="TRL — The Right Lifestyle card: The right system changes everything." width="100%">
-</p>
+A **static-first company platform**, not a brochure site. Two halves that share one source of truth:
 
-I’m **Rashid Muhammad**, founder of **TRL — The Right Lifestyle**.
+1. **The website** — a fast, self-hosted, tracker-free marketing and content site. No build step, no framework, no external requests.
+2. **The TRL Console** — a working application surface running in the browser: an enquiry triage engine, an enquiry pipeline, the reference system architecture, an automation opportunity model, a scope brief builder and an assistant that answers from our own published content.
+3. **The TRL API** *(optional)* — a zero-dependency Node service that serves the same files, stores enquiries and runs the same engines server-side.
 
-TRL is a founder-led company based in Islamabad, Pakistan, serving owner-operated businesses across Pakistan and internationally online. We design and implement practical business systems, workflow automation, and custom digital services — replacing manual, repetitive chaos with durable, documented processes that continue running smoothly when you are not in the room.
+The site works with **no backend at all**. Every module has a local fallback, and the interface says honestly which mode is running.
 
-We start with the actual business friction first. Only once the workflow, bottleneck, and desired outcome are defined do we select the right tools and build the solution.
+---
 
-> **"The right system changes everything."**
+## The system, end to end
+
+```
+Browser                          Node API (optional)            Data layer
+────────                          ──────────────────            ──────────
+index / services / work           GET  /api/health              assets/data/*.json
+insights / about / contact        POST /api/triage              ├─ services.json
+console/index.html                POST /api/leads               ├─ work.json
+      │                           GET  /api/leads               ├─ insights.json
+      │                                   │                     └─ knowledge.json
+      │  shared engines ──────────────────►│
+      ├─ engines/triage.js  ◄────────────────┘   server/data/leads.json
+      ├─ engines/roi.js
+      ├─ engines/blueprint.js
+      ├─ engines/assistant.js
+      ├─ engines/brief.js
+      └─ engines/pipeline.js
+```
+
+`assets/js/engines/*.js` are **pure modules** — no DOM, no network, no timers. The browser imports them, the API imports the *same files*, and the test suite asserts on them. The triage engine cannot behave one way on the site and another way in production, because there is only one implementation.
+
+---
+
+## The TRL Console
+
+Open `console/index.html` (or `/TRL/console/` on the live site) and you get six working modules:
+
+| Module | What it does |
+|---|---|
+| **Triage engine** | Turns an unstructured enquiry into a structured record: intent with confidence and runner-up, urgency with the phrases that triggered it, extracted order references, budget and timeline, the gaps still missing, a routing decision with an SLA, and a reply draft for a human to approve. Copy or download the record as JSON. |
+| **Enquiry pipeline** | A drag-and-drop board across the real engagement stages (Intake → Discovery → Scoped → Audit → Proposal → Active → Handover), with live metrics and local persistence. Seeded with clearly-labelled sample records. |
+| **System blueprint** | The five-layer reference architecture — capture, route, automate, document, review — with what we implement, the signals we measure, the tools we reach for and the failure modes we design against. |
+| **Opportunity model** | Enter your real hours, cost and error rates; get annual hours recovered, annual benefit, build effort, payback period and a four-quadrant prioritisation — including the quadrant labelled *leave alone*. |
+| **Scope brief** | Eight structured questions that produce a written brief, a recommended route and an estimated duration you can send to any firm, including us. |
+| **Assistant** | Retrieval over the published knowledge base. It answers about services, pricing, timelines, ownership and boundaries, and says plainly when it does not know. |
+
+Nothing typed into the Console is transmitted or stored on a server. Records live in your own browser's local storage.
 
 ---
 
 ## What TRL builds
 
-TRL operates across seven practical service disciplines:
-
 | Discipline | What we deliver |
 |---|---|
-| **01 · AI &amp; Automation** | Intelligent enquiry routing, customer messaging flows, internal triaging, document summarisation, and scheduled background jobs. |
-| **02 · Websites &amp; Digital Products** | High-performance, zero-bloat static websites, custom client portals, and bespoke web interfaces built for conversion and trust. |
-| **03 · Research &amp; Market Intelligence** | Competitor audits, market mapping, tooling evaluations, and structured feasibility briefs for new initiatives. |
-| **04 · Business Strategy &amp; Systems** | Operating manuals, standard operating procedures (SOPs), process documentation, handover guides, and business tracking registers. |
-| **05 · Marketing &amp; Content Systems** | Publishing cadences, structured content pipelines, lead capture funnels, and automated follow-up sequences. |
-| **06 · Software &amp; Integrations** | Custom scripts, API connectors, spreadsheet automations (Google Sheets / Excel), and webhooks connecting disparate tools. |
-| **07 · Consultation &amp; Direction** | Technical guidance, architecture advisory, vendor evaluations, and fractional systems leadership for business owners. |
-
----
-
-## Interactive demonstration — Enquiry triage &amp; routing
-
-<p align="center">
-  <img src="triage-demo.gif" alt="Animated demonstration of the TRL Enquiry Triage &amp; Routing prototype in action." width="100%">
-</p>
-
-<p align="center">
-  <em>Live working prototype: converts messy customer messages into structured, prioritized records with a draft human-approved reply.</em>
-</p>
-
-Experience the prototype directly in your browser:  
-👉 **[Open the Live Demonstration Prototype](https://therightlifestyle.github.io/TRL/lead-triage.html)**
-
-- **100% Client-Side:** Runs entirely in your browser using pure JavaScript.
-- **Privacy First:** Zero API calls, zero server transmission, and zero data logging. Nothing typed is stored or sent.
-- **Real Workflow:** Automatically detects sender name, business, urgency, intent category, order/ticket references, and drafts a human-ready reply.
+| **01 · AI & Automation** | Enquiry intake with automatic classification, routing and SLA clocks; AI-assisted drafting with human approval; workflow automation; scheduled background jobs; runbooks and monitoring. |
+| **02 · Websites & Digital Products** | Company websites, landing pages, client portals and scoped digital products — fast, self-hosted, no tracking, fully handed over. |
+| **03 · Research & Market Intelligence** | Competitor audits, market mapping, tooling evaluations and feasibility briefs with the raw files included. |
+| **04 · Business Strategy & Documentation** | As-is process maps, standard operating procedures, decision logs, ownership matrices and handover packs. |
+| **05 · Marketing, Branding & Content** | Message frameworks, brand assets, publishing workflows, landing pages and follow-up sequences. |
+| **06 · Software & Integrations** | API connectors, webhooks, spreadsheet automations and one-off scripts — with error handling, logging and rollback. |
+| **07 · Consultation & Direction** | Structured diagnostics, written recommendations with options and trade-offs, vendor shortlists, fractional systems leadership. |
 
 ---
 
 ## Rapid AI Opportunity Audit
 
-Our introductory fixed-scope diagnostic engagement for owner-operated businesses:
+The introductory fixed-scope engagement:
 
-- **Price:** **PKR 3,000** (Single fixed-fee engagement)
-- **Turnaround:** 3–5 working days
-- **Deliverables:**
-  1. Complete operational friction map of your top time-drains.
-  2. Prioritised matrix of automation opportunities ranked by impact vs effort.
-  3. Actionable implementation roadmap with recommended tooling and estimated ROI.
-  4. 30-minute founder walkthrough call to answer questions.
-
-No upsell pressure, no retainers required. You own the diagnostic memo and can implement it yourself or with any partner.
+- **Price:** PKR 3,000, published, no tiers
+- **Turnaround:** within 72 hours of confirmed payment
+- **Deliverables:** an operational friction map, a prioritised automation matrix, an implementation roadmap with tooling and estimated ROI, a 30-minute walkthrough, and a 15-minute question call
+- **Seven-day adjustment window** for anything factually wrong about your business
+- **No obligation to proceed**, and the audit fee is not credited against a later build
 
 ---
 
-## How we work — Four-stage process
+## How we work — four stages
 
 ```
 ┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐
@@ -101,99 +110,111 @@ No upsell pressure, no retainers required. You own the diagnostic memo and can i
 └─────────────────┘     └─────────────────┘     └─────────────────┘     └─────────────────┘
 ```
 
-1. **Conversation:** A focused discovery discussion about your operations, bottlenecks, and objectives.
-2. **Definition:** Scope, milestones, timeline, and exact deliverables agreed in writing before any build begins.
-3. **Build:** Transparent, staged execution with regular progress demos and no black-box surprises.
-4. **Handover:** Full ownership transfer — you keep all accounts, source code, documentation, and operational independence.
+1. **Conversation** — an honest discussion about the friction, not a pitch.
+2. **Definition** — scope, deliverables, timeline and success criteria in writing before any build.
+3. **Build** — staged execution with visible demos, no black-box surprises.
+4. **Handover** — deliverable, documentation, accounts, credentials and a walkthrough. You keep everything.
 
 ---
 
-## Honest by default — Non-negotiable boundaries
+## Honest by default — non-negotiable boundaries
 
-- **No fabricated credibility:** No fake client testimonials, invented logos, fictitious team members, or inflated revenue claims.
-- **Labelled honestly:** Prototypes and mockups are explicitly marked as `Demonstration` or `Sample deliverable`.
-- **Complete client ownership:** You own 100% of your data, accounts, credentials, and code. No vendor lock-in.
-- **Security &amp; privacy:** Zero passwords in chats or unencrypted files. No unsolicited bulk messages or spam.
-- **Pragmatic advice:** If an off-the-shelf free tool solves your problem, or if automation is unnecessary, we will tell you upfront.
+- **No fabricated credibility.** No invented testimonials, fictitious clients, fake logos or inflated results.
+- **Labelled honestly.** Prototypes and mockups are marked `Working prototype`, `Sample deliverable` or `Live in this site` — never as client work.
+- **Modelled figures are labelled as models.** The opportunity model states plainly that its outputs are estimates from the visitor's own numbers, not measured client results.
+- **Complete client ownership.** Source, accounts, credentials and documentation transfer at handover. No lock-in.
+- **Security & privacy.** No passwords in chats, no unsolicited bulk messages, no third-party trackers on this site.
+- **Pragmatic advice.** If a free tool solves the problem, we say so before you pay us.
 
 ---
 
-## Repository architecture &amp; tech stack
-
-This repository contains the official production codebase for the TRL website, built according to our **"Systems Studio"** design standard:
-
-- **Architecture:** Zero-build static site. Zero server runtime, zero framework dependencies, zero trackers, and **zero external network requests**.
-- **Typography:** Self-hosted [Newsreader](https://fonts.google.com/specimen/Newsreader) (editorial serif) and [Manrope](https://fonts.google.com/specimen/Manrope) (geometric sans) as self-hosted `.woff2` variable fonts with `font-display: swap`.
-- **Palette:** Signature deep navy (`#040B14` → `#17375F`) foundation, restrained gold (`#C9A227`), and technical blue (`#5B9DFF`).
-- **Theme support:** Built-in Light and Dark theme toggle with persistent preference and automatic system detection.
-- **Responsive &amp; Accessible:** 100% WCAG AA contrast compliance, zero horizontal overflow at 320px–1440px+, and full accessibility under `prefers-reduced-motion`.
-
-### File structure
+## Repository architecture
 
 ```
-therightlifestyle/TRL/
-├── index.html                      # Homepage: proposition, capabilities, process, demo showcase, audit
-├── services.html                   # 7 service disciplines, pricing philosophy, and audit details
-├── portfolio.html                  # Sample deliverables and interactive demonstrations
-├── how-we-work.html                # 6-stage engagement lifecycle and commercial terms
-├── about.html                      # Purpose, founder background, scoping principles, commitments
-├── contact.html                    # Two WhatsApp routes, direct email, and response SLAs
-├── lead-triage.html                # Live interactive customer enquiry triage prototype
-├── privacy.html                    # Transparent privacy notice
-├── terms.html                      # Fair terms of engagement
-├── style.css                       # Systems Studio design system & CSS variables (Dark & Light)
-├── main.js                         # Progressive enhancements (drawer, scroll stuck, reveals, theme toggle)
-├── trl-banner.gif                  # Animated hero profile banner
-├── triage-demo.gif                 # Animated enquiry triage demonstration GIF
-├── og-image.png                    # 1200×630 Open Graph & social card asset
-├── favicon.svg                     # High-resolution vector brand mark
-├── manrope-normal-latin.woff2      # Self-hosted interface font (regular)
-├── manrope-normal-latin-ext.woff2  # Self-hosted interface font (extended latin)
-├── newsreader-normal-latin.woff2   # Self-hosted display serif font (regular)
-├── newsreader-normal-latin-ext.woff2 # Self-hosted display serif font (extended latin)
-├── newsreader-italic-latin.woff2   # Self-hosted display serif font (italic)
-├── robots.txt                      # Search crawler directives
-├── sitemap.xml                     # Search index sitemap
-├── .nojekyll                       # GitHub Pages raw static serving directive
-├── .gitignore                      # Git exclusion rules
-├── .gitattributes                  # LF line endings & binary file attributes
-├── .editorconfig                   # Editor standards
-├── LICENSE                         # Proprietary source & copyright declaration
-├── CHANGELOG.md                    # Release history and audit log
-├── DEVELOPMENT.md                  # Developer manual and quality assurance checklist
-└── DEPLOYMENT.md                   # Production deployment manual
+TRL/
+├── index.html                    # Homepage: hero, capabilities, architecture, work, audit, insights, FAQ
+├── services.html                 # Seven disciplines, engagement models, the audit, boundaries
+├── work.html                     # Demonstrations & sample deliverables (filterable, with detail drawer)
+├── insights.html                 # Searchable, filterable insights hub
+├── how-we-work.html              # Six-stage engagement lifecycle, support model, commercial terms
+├── about.html                    # Purpose, founder, scoping principles, commitments
+├── contact.html                  # Working enquiry form, live routing readout, WhatsApp & email routes
+├── privacy.html / terms.html     # Privacy notice and terms of engagement
+├── console/
+│   └── index.html                # The TRL Console application shell
+├── assets/
+│   ├── css/                      # Layered design system
+│   │   ├── tokens.css            #   1 · Design tokens, themes, type scale
+│   │   ├── base.css              #   2 · Reset, typography, layout primitives
+│   │   ├── components.css        #   3 · Reusable components
+│   │   ├── pages.css             #   4 · Page compositions
+│   │   └── console.css           #   5 · Console application
+│   ├── js/
+│   │   ├── main.js               # Site bootstrap (page dispatch)
+│   │   ├── core/                 # dom · store · api · config · data · events · router · format
+│   │   ├── engines/              # Pure business logic (shared with the API and tests)
+│   │   ├── components/           # theme · nav · reveal · tabs · accordion · counters · chat · toast · icons
+│   │   └── apps/                 # home · work · insights · services · contact · console
+│   ├── data/                     # JSON data layer (services, work, insights, knowledge, faq, config)
+│   ├── fonts/                    # Self-hosted Newsreader + Manrope woff2
+│   └── img/                      # Photography and brand imagery
+├── server/                       # Optional zero-dependency Node API
+│   ├── src/                      # index · http · routes · store · security · validate · logger
+│   ├── Dockerfile, render.yaml, railway.json, Procfile, .env.example, README.md
+├── scripts/                      # check-site.mjs (integrity audit) · lint-js.mjs (syntax) · smoke-dom.mjs (browser simulation)
+├── tests/                        # node:test suites for every engine, the data layer, the API and the site audit
+├── .github/workflows/ci.yml      # Lint → site audit → unit tests → API smoke test
+├── package.json                  # Scripts only — no runtime dependencies
+└── sitemap.xml · robots.txt · favicon.svg · og-image.png
 ```
 
 ---
 
-## Local development &amp; preview
+## Run it locally
 
-Clone the repository and serve it locally with Python's built-in HTTP server:
+No install step — the server uses only the Node standard library.
 
 ```bash
 git clone https://github.com/therightlifestyle/TRL.git
 cd TRL
-python3 -m http.server 8000
+npm run dev          # http://localhost:8080 — static site + API together
 ```
 
-Open `http://localhost:8000` in any modern browser.
+```bash
+npm run lint         # syntax-check every JS module
+npm run check        # link, asset and third-party-request audit
+npm test             # engine, data-layer and site test suites
+npm run verify       # all three
+```
 
-Because all internal links and asset paths are relative, files can also be previewed directly via `file://`.
+Any static server works for the front end alone (`python3 -m http.server 8000`). A server is required to preview the ES modules — `file://` will not load them.
 
 ---
 
-## Quality assurance &amp; audit status
+## Connecting a deployed API
 
-| Audit check | Status | Specification |
+```html
+<script>window.TRL_CONFIG = { apiBase: 'https://your-api-host' };</script>
+<script type="module" src="assets/js/main.js"></script>
+```
+
+With it, the Console and the contact form call the API and the status chip reads **API connected**. Without it, everything runs locally and the chip reads **Local engine**. See `server/README.md` for deployment (Render, Railway, Docker, or any Node host).
+
+---
+
+## Quality assurance
+
+| Check | Status | How |
 |---|---|---|
-| **Zero external requests** | ✅ PASS | All fonts, CSS, JS, and graphics are self-hosted |
-| **HTTP status codes** | ✅ PASS | All internal pages, scripts, fonts, and images return 200 OK |
-| **Console errors** | ✅ PASS | 0 errors, 0 warnings across all 9 pages |
-| **Mobile responsiveness** | ✅ PASS | 0px horizontal overflow from 320px to 1440px |
-| **Dual theme support** | ✅ PASS | Navy Systems Studio Dark + Clean Light theme toggle |
-| **Typography loading** | ✅ PASS | Self-hosted WOFF2 with local fallbacks |
-| **Structured data** | ✅ PASS | Valid Schema.org `ProfessionalService` JSON-LD |
-| **Nojekyll flag** | ✅ PASS | `.nojekyll` present to bypass Jekyll processing |
+| Zero external requests | ✅ PASS | `npm run check` — no third-party asset, font or script references |
+| Link & asset integrity | ✅ PASS | `npm run check` — every local reference resolves |
+| Page metadata | ✅ PASS | Title, description, `lang` and a single `h1` on every page |
+| JavaScript syntax | ✅ PASS | `npm run lint` — 40+ modules parsed by Node's own parser |
+| Engine unit tests | ✅ PASS | `npm test` — 42 assertions across triage, ROI, assistant, brief, pipeline, blueprint, the data layer and the API's safety primitives |
+| Browser simulation | ✅ PASS | `npm run smoke` — every page loaded in JSDOM, every module executed, every interaction driven |
+| API smoke test | ✅ PASS | CI boots the server and exercises `/api/health` and `/api/triage` |
+| Responsive & accessible | ✅ | Fluid from 320px, keyboard-operable tabs/accordions/drawers, `prefers-reduced-motion` honoured, AA contrast in both themes |
+| Privacy | ✅ | No cookies, no analytics, no trackers, no CDN fonts — enforced by the site audit |
 
 ---
 
@@ -203,7 +224,7 @@ Because all internal links and asset paths are relative, files can also be previ
 - **WhatsApp:** [+92 319 0091457](https://wa.me/923190091457)
 - **Email:** [officialtrlservice@gmail.com](mailto:officialtrlservice@gmail.com)
 - **Hours:** Monday – Saturday, 10:30 to 18:30 PKT
-- **Location:** Islamabad, Pakistan · Serving clients online internationally
+- **Location:** Islamabad, Pakistan · serving clients online internationally
 
 <br>
 <p align="center">

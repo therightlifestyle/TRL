@@ -1,0 +1,77 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-10-19",
+  "items": [
+    {
+      "id": "cost",
+      "question": "What does an engagement cost?",
+      "answer": [
+        "The Rapid AI Opportunity Audit is a fixed PKR 3,000, delivered within 72 hours, and it is not credited against a later build. Larger work is quoted per scope, in writing, with the deliverables and exclusions stated before anything starts. Ongoing support, if you want it, is a monthly retainer with short notice — but most clients do not need one.",
+        "There is no tier system, no “from” pricing and no discovery fee that quietly becomes the first invoice."
+      ]
+    },
+    {
+      "id": "timeline",
+      "question": "How long does it take?",
+      "answer": [
+        "One focused workflow is usually one to two weeks. A website is typically two to four. A multi-workflow systems engagement runs six to ten weeks and is usually phased. Research engagements take five to ten working days.",
+        "If you have a date you have not mentioned, say so at the start — the schedule is part of the scope, not something to discover in week three."
+      ]
+    },
+    {
+      "id": "ownership",
+      "question": "Who owns the work when you finish?",
+      "answer": [
+        "You do, completely. Source code, documentation, runbooks, accounts and credentials all transfer at handover, along with a walkthrough of how to change things. There is no proprietary platform holding your business, and no dependency on us by design.",
+        "We would rather be re-hired for being good than kept hired for being difficult to leave."
+      ]
+    },
+    {
+      "id": "remote",
+      "question": "Do you work with businesses outside Pakistan?",
+      "answer": [
+        "Yes. Roughly half our work is with businesses outside Pakistan, delivered fully online — calls, shared documents, and work executed directly in your accounts so you keep control of everything. Timezone differences are handled by fixing a small set of agreed working hours, not by expecting instant replies."
+      ]
+    },
+    {
+      "id": "boundaries",
+      "question": "What will you not do?",
+      "answer": [
+        "We will not fabricate credibility — no invented testimonials, no fictitious clients, no inflated results. We will not sell software you do not need. We will not take a retainer for work that does not need one. And we will not take on a project where we are the wrong firm, which we will say plainly before you commit.",
+        "If a free tool solves the problem, we will tell you before you pay us."
+      ]
+    },
+    {
+      "id": "audit-scope",
+      "question": "What exactly do I get from the PKR 3,000 audit?",
+      "answer": [
+        "An operational friction map of the workflows you described, a prioritised automation matrix scoring every candidate on impact, effort and confidence, an implementation roadmap with the tools we would use and the ROI we would expect, a 30-minute walkthrough, and a 15-minute call for your questions.",
+        "You get the raw working files, not just a summary. If anything in it is factually wrong about your business, we correct it within seven days at no charge."
+      ]
+    },
+    {
+      "id": "support",
+      "question": "What happens after handover?",
+      "answer": [
+        "You get the documentation, the runbooks, the accounts and a walkthrough — and you are free to change things yourself afterwards. If you would rather we stayed close, ongoing support is a monthly retainer with a short notice period and a defined response window.",
+        "About half of our clients come back for a second phase within a year. The other half never need to, which is also a good outcome."
+      ]
+    },
+    {
+      "id": "revisions",
+      "question": "What if I want changes after it is delivered?",
+      "answer": [
+        "Small refinements after handover are part of the handover week. Anything that changes the agreed scope is quoted separately and transparently — you decide whether it is worth doing, and we do not bill for discovering that it is not.",
+        "Every engagement states its revision window in the scope document before work starts."
+      ]
+    },
+    {
+      "id": "data",
+      "question": "Who can see my data and my accounts?",
+      "answer": [
+        "Only the people working on your engagement, and only where the work requires it. Credentials are never shared in chat or email — we use a password manager and direct account access, and we remove ourselves when the engagement closes.",
+        "Anything that needs to run unattended is set up in your own accounts and your own infrastructure, not in a workspace we control."
+      ]
+    }
+  ]
+}

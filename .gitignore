@@ -35,3 +35,9 @@ TRL-OPERATING-SYSTEM.md
 .cache/
 dist/
 build/
+
+# TRL API runtime data (never commit enquiry records)
+server/data/*.json
+server/data/*.tmp
+.env
+.env.local

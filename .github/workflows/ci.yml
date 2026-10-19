@@ -1,0 +1,49 @@
+name: CI
+
+on:
+  push:
+    branches: [main, 'arena/**']
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    name: Verify
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Set up Node
+        uses: actions/setup-node@v7
+        with:
+          node-version: 22
+
+      - name: JavaScript syntax check
+        run: npm run lint
+
+      - name: Site integrity audit (links, assets, no third-party requests)
+        run: npm run check
+
+      - name: Unit tests (engines, data layer, site audit)
+        run: npm test
+
+      - name: Browser simulation smoke test
+        run: |
+          npm install --no-save --no-audit --no-fund jsdom
+          node scripts/smoke-dom.mjs
+
+      - name: API smoke test
+        run: |
+          node server/src/index.mjs &
+          SERVER_PID=$!
+          sleep 2
+          curl -fsS http://127.0.0.1:8080/api/health
+          curl -fsS -X POST http://127.0.0.1:8080/api/triage \
+            -H 'Content-Type: application/json' \
+            -d '{"text":"Hi, I am Bilal from Sattar Textiles and I need to automate 300 enquiries a day. Budget PKR 250,000."}' \
+            | head -c 400
+          kill $SERVER_PID

@@ -1,0 +1,28 @@
+{
+  "name": "trl",
+  "version": "3.0.0",
+  "private": true,
+  "description": "TRL — The Right Lifestyle: business systems, AI automation and digital services. Static-first site plus an optional zero-dependency Node API.",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "node server/src/index.mjs",
+    "start": "node server/src/index.mjs",
+    "api": "node server/src/index.mjs",
+    "test": "node --test \"tests/*.test.mjs\"",
+    "check": "node scripts/check-site.mjs",
+    "lint": "node scripts/lint-js.mjs",
+    "smoke": "node scripts/smoke-dom.mjs",
+    "verify": "npm run lint && npm run check && npm test"
+  },
+  "keywords": [
+    "business-systems",
+    "automation",
+    "static-site",
+    "zero-dependency"
+  ],
+  "author": "TRL — The Right Lifestyle",
+  "license": "SEE LICENSE IN LICENSE"
+}
