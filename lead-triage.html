@@ -6,9 +6,9 @@
 <title>Demonstration — Enquiry triage &amp; routing · TRL</title>
 <meta name="description" content="A working TRL demonstration: turn an unstructured customer enquiry into structured, routed fields with a draft reply. Runs entirely in the browser.">
 <meta name="robots" content="index,follow">
-<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
-<link rel="preload" href="../assets/fonts/manrope-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../assets/css/style.css">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" href="manrope-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="style.css">
 <style>
   .panel{border:1px solid var(--hair-2);border-radius:var(--r-lg);overflow:hidden;
     background:linear-gradient(170deg,var(--n-900),var(--n-1000));box-shadow:var(--shadow-sm)}
@@ -54,25 +54,30 @@
     margin:2.2rem 0 1rem}
   @media(max-width:600px){.kv>div{grid-template-columns:1fr;gap:.15rem;padding:.7rem 0}}
 </style>
+<script>(function(){try{var t=localStorage.getItem('trl-theme');if(t==='light'){document.documentElement.setAttribute('data-theme','light');}}catch(e){}})();</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="nav" id="nav">
  <div class="wrap nav-in">
-  <a class="wordmark" href="../index.html" aria-label="TRL home">
+  <a class="wordmark" href="index.html" aria-label="TRL home">
    <span class="wm-mark">TRL</span><span class="wm-dot" aria-hidden="true"></span>
    <span class="wm-txt">The Right Lifestyle</span>
   </a>
   <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu">
    <span></span><span></span><span></span>
   </button>
-  <nav class="nav-links" id="menu" aria-label="Main">
-   <a href="../index.html">Home</a>
-   <a href="../services.html">Services</a>
-   <a href="../portfolio.html">Work</a>
-   <a href="../how-we-work.html">Process</a>
-   <a href="../about.html">About</a>
-   <a class="btn btn-sm btn-gold nav-cta" href="../contact.html">Connect</a>
+    <nav class="nav-links" id="menu" aria-label="Main">
+   <a href="index.html">Home</a>
+   <a href="services.html">Services</a>
+   <a href="portfolio.html">Work</a>
+   <a href="how-we-work.html">Process</a>
+   <a href="about.html">About</a>
+   <a class="btn btn-sm btn-gold nav-cta" href="contact.html">Connect</a>
+   <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to light theme" title="Switch to light theme">
+    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+   </button>
   </nav>
  </div>
 </header>
@@ -136,7 +141,7 @@
     <li><b>Status</b><span>Demonstration. Not client work, not a measured result, and not a finished product.</span></li>
    </ul>
    <div class="btn-row" style="margin-top:2.2rem">
-    <a class="btn btn-line" href="../portfolio.html">Back to demonstrations</a>
+    <a class="btn btn-line" href="portfolio.html">Back to demonstrations</a>
    </div>
   </div>
  </div>
@@ -146,11 +151,11 @@
 <footer class="foot">
  <div class="wrap foot-base" style="border-top:0">
   <span>&copy; <span id="yr">2026</span> TRL — The Right Lifestyle. Demonstration page.</span>
-  <span class="foot-legal"><a href="../privacy.html">Privacy</a><a href="../terms.html">Terms</a></span>
+  <span class="foot-legal"><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></span>
  </div>
 </footer>
 
-<script src="../assets/js/main.js" defer></script>
+<script src="main.js" defer></script>
 <script>
 (function(){
   "use strict";
