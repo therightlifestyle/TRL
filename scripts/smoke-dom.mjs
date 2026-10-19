@@ -5,9 +5,8 @@
  * Loads every page in a JSDOM window, executes the real ES modules against
  * the real DOM, and fails on any console error or unhandled rejection.
  *
- * JSDOM is a development-only tool and is intentionally NOT a project
- * dependency: it is installed with `npm install --no-save jsdom` and the
- * runtime stays dependency-free.
+ * JSDOM is a development-only dependency: it is not required by the static
+ * site or the runtime API, but `npm install` makes this check reproducible.
  */
 
 import { readFile } from 'node:fs/promises';
