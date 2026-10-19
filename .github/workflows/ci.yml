@@ -46,4 +46,22 @@ jobs:
             -H 'Content-Type: application/json' \
             -d '{"text":"Hi, I am Bilal from Sattar Textiles and I need to automate 300 enquiries a day. Budget PKR 250,000."}' \
             | head -c 400
+          # The engines added in v3.1.0 must all be reachable, not just triage.
+          curl -fsS "http://127.0.0.1:8080/api/search?q=automation&limit=3" | head -c 200
+          curl -fsS -X POST http://127.0.0.1:8080/api/assistant \
+            -H 'Content-Type: application/json' \
+            -d '{"question":"How much does the audit cost?"}' | head -c 200
+          curl -fsS -X POST http://127.0.0.1:8080/api/roi \
+            -H 'Content-Type: application/json' \
+            -d '{"teamSize":4,"tasks":[{"name":"Enquiry handling","hours":12,"repetitiveness":5,"complexity":2}]}' | head -c 200
+          curl -fsS -X POST http://127.0.0.1:8080/api/brief \
+            -H 'Content-Type: application/json' \
+            -d '{"answers":{"problem":"Manual enquiry logging","volume":"Every hour"}}' | head -c 200
+          curl -fsS http://127.0.0.1:8080/api/blueprint | head -c 200
+          curl -fsS http://127.0.0.1:8080/api/engines
+          # Invalid input must be rejected with 422, not accepted silently.
+          test "$(curl -s -o /dev/null -w '%{http_code}' -X POST http://127.0.0.1:8080/api/roi \
+            -H 'Content-Type: application/json' -d '{"teamSize":2}')" = "422"
+          test "$(curl -s -o /dev/null -w '%{http_code}' -X POST http://127.0.0.1:8080/api/newsletter \
+            -H 'Content-Type: application/json' -d '{"email":"not-an-email"}')" = "422"
           kill $SERVER_PID

@@ -19,6 +19,7 @@
 <link rel="stylesheet" href="assets/css/base.css">
 <link rel="stylesheet" href="assets/css/components.css">
 <link rel="stylesheet" href="assets/css/pages.css">
+<link rel="stylesheet" href="assets/css/motion.css">
 <script>(function(){try{var t=localStorage.getItem('trl-theme');if(t==='light'){document.documentElement.setAttribute('data-theme','light');}}catch(e){}})();</script>
 </head>
 <body data-page="services">
@@ -501,7 +502,18 @@
    </ul>
   </div>
  </div>
- <div class="wrap foot-base">
+ <div class="wrap foot-sub">
+ <div class="foot-sub-copy">
+  <h3>Field notes on systems that hold up</h3>
+  <p class="small">Occasional, practical writing on automation, operations and the mistakes worth avoiding. No newsletter theatre, no third-party trackers.</p>
+ </div>
+ <form class="foot-sub-form" id="subscribe-form" novalidate>
+  <label class="sr-only" for="sub-email">Email address</label>
+  <input class="input" id="sub-email" name="email" type="email" placeholder="you@company.com" autocomplete="email" required>
+  <button class="btn btn-gold btn-sm" type="submit">Subscribe</button>
+ </form>
+</div>
+<div class="wrap foot-base">
   <span>&copy; <span id="yr">2026</span> TRL — The Right Lifestyle. Founder-led. Islamabad, Pakistan.</span>
   <span class="foot-legal"><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></span>
  </div>

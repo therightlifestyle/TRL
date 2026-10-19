@@ -109,17 +109,42 @@ export async function withFallback(path, fallback, options = {}) {
   }
 }
 
+const query = (params = {}) => {
+  const search = new URLSearchParams(
+    Object.entries(params).filter(([, value]) => value !== undefined && value !== null && value !== '')
+  ).toString();
+  return search ? `?${search}` : '';
+};
+
 export const api = {
   health: () => request('/api/health', { timeout: 3500 }),
+  manifest: () => request('/api'),
+  engines: () => request('/api/engines'),
+
   triage: (text, meta = {}) => request('/api/triage', { method: 'POST', body: { text, ...meta } }),
+  ask: (question, options = {}) => request('/api/assistant', { method: 'POST', body: { question, ...options } }),
+  starters: () => request('/api/assistant/starters'),
+  roi: (input) => request('/api/roi', { method: 'POST', body: input }),
+  brief: (answers) => request('/api/brief', { method: 'POST', body: { answers } }),
+  briefQuestions: () => request('/api/brief/questions'),
+  blueprint: () => request('/api/blueprint'),
+  search: (q, params = {}) => request(`/api/search${query({ q, ...params })}`),
+
   createLead: (payload) => request('/api/leads', { method: 'POST', body: payload }),
-  listLeads: (params = {}) => {
-    const qs = new URLSearchParams(params).toString();
-    return request(`/api/leads${qs ? `?${qs}` : ''}`);
-  },
-  updateLead: (id, payload) => request(`/api/leads/${id}`, { method: 'PATCH', body: payload }),
+  listLeads: (params = {}) => request(`/api/leads${query(params)}`),
+  getLead: (id) => request(`/api/leads/${encodeURIComponent(id)}`),
+  updateLead: (id, payload) => request(`/api/leads/${encodeURIComponent(id)}`, { method: 'PATCH', body: payload }),
+  deleteLead: (id) => request(`/api/leads/${encodeURIComponent(id)}`, { method: 'DELETE' }),
+
+  subscribe: (email, topic = 'general') => request('/api/newsletter', { method: 'POST', body: { email, topic } }),
+  subscribers: (params = {}) => request(`/api/subscribers${query(params)}`),
+
   metrics: () => request('/api/metrics'),
   services: () => request('/api/services'),
   insights: () => request('/api/insights'),
-  knowledge: () => request('/api/knowledge')
+  knowledge: () => request('/api/knowledge'),
+  work: () => request('/api/work'),
+  faq: () => request('/api/faq'),
+  config: () => request('/api/config'),
+  pipeline: () => request('/api/pipeline')
 };

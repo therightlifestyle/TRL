@@ -472,6 +472,31 @@ table.data td b{color:var(--tx);font-weight:600}
 .sys-status{display:inline-flex;align-items:center;gap:.5rem;font-size:.72rem;color:var(--tx-4);
   font-family:var(--mono);margin-top:1rem}
 
+/* --------------------------------------------------------- footer subscribe */
+.foot-sub{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  gap:clamp(1.4rem,4vw,3rem);align-items:center;
+  border-top:1px solid var(--hair);padding-block:clamp(2rem,4vw,2.8rem)}
+.foot-sub-copy h3{font-size:var(--fs-h3);font-family:var(--serif);font-weight:400;
+  letter-spacing:-.015em;color:var(--tx);text-transform:none;margin-bottom:.5rem}
+.foot-sub-copy p{max-width:46ch;margin:0}
+.foot-sub-form{display:flex;gap:.55rem;flex-wrap:wrap;justify-content:flex-end}
+.foot-sub-form .input{flex:1 1 240px;min-width:0}
+.foot-sub-form .input[aria-invalid="true"]{border-color:var(--red);box-shadow:0 0 0 1px var(--red-dim)}
+.foot-sub-form .btn{flex:none}
+@media (max-width:860px){
+  .foot-sub{grid-template-columns:minmax(0,1fr)}
+  .foot-sub-form{justify-content:flex-start}
+  .foot-sub-form .btn{flex:1}
+}
+
+/* --------------------------------------------------------- palette trigger
+   Shares the theme-toggle silhouette so the nav reads as one control cluster. */
+.palette-trigger{position:relative}
+.palette-trigger::after{content:"⌘K";position:absolute;right:-2px;bottom:-4px;
+  font-family:var(--mono);font-size:.52rem;letter-spacing:.04em;color:var(--tx-4);
+  opacity:0;transition:opacity var(--dur-fast) var(--ease-out)}
+.palette-trigger:hover::after,.palette-trigger:focus-visible::after{opacity:1}
+
 /* ================================================================ PAGE HERO */
 .phero{position:relative;padding-top:clamp(7.5rem,14vh,10.5rem);
   padding-bottom:clamp(2.6rem,5vw,4rem);overflow:hidden;border-bottom:1px solid var(--hair)}

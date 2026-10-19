@@ -20,6 +20,7 @@
 <link rel="stylesheet" href="assets/css/base.css">
 <link rel="stylesheet" href="assets/css/components.css">
 <link rel="stylesheet" href="assets/css/pages.css">
+<link rel="stylesheet" href="assets/css/motion.css">
 <script>(function(){try{var t=localStorage.getItem('trl-theme');if(t==='light'){document.documentElement.setAttribute('data-theme','light');}}catch(e){}})();</script>
 </head>
 <body data-page="home">
@@ -57,10 +58,11 @@
 <section class="hero">
  <div class="hero-bg" aria-hidden="true"><img src="assets/img/hero-architecture.jpg" alt="" width="1400" height="933" fetchpriority="high" decoding="async"></div>
  <div class="hero-glow" aria-hidden="true"></div>
+ <div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
  <div class="wrap hero-in">
   <div class="hero-copy">
-   <p class="eyebrow">TRL — The Right Lifestyle · Islamabad, Pakistan</p>
-   <h1 class="display">The right system changes <em>everything</em>.</h1>
+   <p class="eyebrow rv">TRL — The Right Lifestyle · Islamabad, Pakistan</p>
+   <h1 class="display lines rv"><span>The right system changes</span><span><em>everything</em>.</span></h1>
    <p class="lead">We design and build the operating system behind owner-operated businesses — enquiry routing, workflow automation, documentation and the digital products that sit on top of them. Systems that keep running when you are not in the room.</p>
    <div class="btn-row hero-cta">
     <a class="btn btn-gold" href="contact.html">Start a conversation <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
@@ -69,11 +71,13 @@
    <div class="hero-meta">
     <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21.5s7-6 7-11a7 7 0 1 0-14 0c0 5 7 11 7 11z"/><circle cx="12" cy="10.2" r="2.6"/></svg> <span>Based in <b>Islamabad, Pakistan</b> · clients online worldwide</span></div>
     <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 6.8V12l3.4 2"/></svg> <span>Replies <b>Mon–Sat, 10:30–18:30 PKT</b></span></div>
+    <div><span class="dot-live" aria-hidden="true"></span> <span>Press <b>Ctrl / ⌘ K</b> to search everything</span></div>
    </div>
+   <p class="hero-meta hide-sm"><a class="scroll-cue" href="#capabilities"><i aria-hidden="true"></i>Scroll</a></p>
   </div>
   <div class="hero-visual">
    <img src="assets/img/hero-architecture.jpg" alt="A modern glass office building at dusk, representing the systems TRL designs" width="1400" height="933" decoding="async">
-   <div class="sys-card" id="hero-readout" aria-label="TRL system readout">
+   <div class="sys-card float" id="hero-readout" data-spot data-tilt data-tilt-max="4" aria-label="TRL system readout">
     <h4>System readout</h4>
     <p class="tiny" style="margin:0 0 .55rem">Enquiries routed without a human reading every message first.</p>
    </div>
@@ -149,7 +153,7 @@
    <h2>Seven capabilities, one operating principle: <em>make the work hold up without you.</em></h2>
    <p class="lead">TRL is not a single-product agency. The capability is broad by design, because the businesses we work with rarely have one narrow problem. Automation often leads the conversation — it is rarely the whole answer.</p>
   </div>
-  <div class="grid g3" id="home-capabilities">
+  <div class="grid g3" id="home-capabilities" data-stagger>
    <p class="muted">Loading capabilities…</p>
   </div>
  </div>
@@ -167,7 +171,7 @@
   <div class="blueprint" id="home-architecture">
    <p class="muted">Loading architecture…</p>
   </div>
-  <div class="grid g3" id="home-principles" style="margin-top:2rem"></div>
+  <div class="grid g3" id="home-principles" data-stagger style="margin-top:2rem"></div>
   <div class="btn-row" style="margin-top:2.2rem">
    <a class="btn btn-line" href="console/index.html#blueprint">Open the full blueprint <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
   </div>
@@ -368,7 +372,18 @@
    </ul>
   </div>
  </div>
- <div class="wrap foot-base">
+ <div class="wrap foot-sub">
+ <div class="foot-sub-copy">
+  <h3>Field notes on systems that hold up</h3>
+  <p class="small">Occasional, practical writing on automation, operations and the mistakes worth avoiding. No newsletter theatre, no third-party trackers.</p>
+ </div>
+ <form class="foot-sub-form" id="subscribe-form" novalidate>
+  <label class="sr-only" for="sub-email">Email address</label>
+  <input class="input" id="sub-email" name="email" type="email" placeholder="you@company.com" autocomplete="email" required>
+  <button class="btn btn-gold btn-sm" type="submit">Subscribe</button>
+ </form>
+</div>
+<div class="wrap foot-base">
   <span>&copy; <span id="yr">2026</span> TRL — The Right Lifestyle. Founder-led. Islamabad, Pakistan.</span>
   <span class="foot-legal"><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></span>
  </div>

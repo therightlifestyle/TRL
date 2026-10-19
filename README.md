@@ -42,18 +42,30 @@ Browser                          Node API (optional)            Data layer
 index / services / work           GET  /api/health              assets/data/*.json
 insights / about / contact        POST /api/triage              ├─ services.json
 console/index.html                POST /api/leads               ├─ work.json
-      │                           GET  /api/leads               ├─ insights.json
-      │                                   │                     └─ knowledge.json
-      │  shared engines ──────────────────►│
-      ├─ engines/triage.js  ◄────────────────┘   server/data/leads.json
-      ├─ engines/roi.js
-      ├─ engines/blueprint.js
-      ├─ engines/assistant.js
-      ├─ engines/brief.js
-      └─ engines/pipeline.js
+⌘K command palette                GET  /api/search              ├─ insights.json
+      │                           POST /api/assistant           ├─ faq.json
+      │  shared engines ──────────►POST /api/roi                ├─ knowledge.json
+      ├─ engines/triage.js        POST /api/brief               └─ config.json
+      ├─ engines/roi.js           GET  /api/blueprint
+      ├─ engines/blueprint.js     POST /api/newsletter
+      ├─ engines/assistant.js     DEL  /api/leads/:id
+      ├─ engines/brief.js                 │
+      ├─ engines/pipeline.js              ▼
+      └─ engines/search.js  ◄───── server/data/leads.json
 ```
 
-`assets/js/engines/*.js` are **pure modules** — no DOM, no network, no timers. The browser imports them, the API imports the *same files*, and the test suite asserts on them. The triage engine cannot behave one way on the site and another way in production, because there is only one implementation.
+`assets/js/engines/*.js` are **pure modules** — no DOM, no network, no timers. The browser imports them, the API imports the *same files*, and the test suite asserts on them. The triage engine cannot behave one way on the site and another way in production, because there is only one implementation. The same holds for search: the ⌘K palette and `GET /api/search` both run `engines/search.js`, so they cannot rank differently.
+
+---
+
+## Motion and the command palette
+
+The interface has a dedicated effect layer (`assets/css/motion.css` + `components/motion.js`) that is opt-in, token-driven and switched off entirely under `prefers-reduced-motion`.
+
+- **⌘K / Ctrl-K** opens a command palette that searches every page, all seven services, the demonstrations, the insights, the FAQ and the knowledge base, and runs actions (theme, WhatsApp, copy email, book the audit). `/` works too.
+- **Pointer and scroll effects** — cursor spotlight, 3D tilt, parallax, magnetic buttons, ripple, scroll progress, back-to-top ring. JavaScript writes CSS custom properties; CSS does the drawing, so the listeners stay on `document` regardless of how many elements opt in.
+- **Reveals** — six variants plus automatic stagger, line-mask and per-character headline reveals, all disabled for reduced motion.
+- **Three-state theme** — dark, light, or follow the operating system. Long-press the toggle for auto.
 
 ---
 
@@ -209,9 +221,9 @@ With it, the Console and the contact form call the API and the status chip reads
 | Zero external requests | ✅ PASS | `npm run check` — no third-party asset, font or script references |
 | Link & asset integrity | ✅ PASS | `npm run check` — every local reference resolves |
 | Page metadata | ✅ PASS | Title, description, `lang` and a single `h1` on every page |
-| JavaScript syntax | ✅ PASS | `npm run lint` — 40+ modules parsed by Node's own parser |
-| Engine unit tests | ✅ PASS | `npm test` — 42 assertions across triage, ROI, assistant, brief, pipeline, blueprint, the data layer and the API's safety primitives |
-| Browser simulation | ✅ PASS | `npm run smoke` — every page loaded in JSDOM, every module executed, every interaction driven |
+| JavaScript syntax | ✅ PASS | `npm run lint` — 55 modules parsed by Node's own parser |
+| Engine unit tests | ✅ PASS | `npm test` — 68 assertions across triage, ROI, assistant, brief, pipeline, blueprint, search, the data layer, the store and the API's safety primitives |
+| Browser simulation | ✅ PASS | `npm run smoke` — every page loaded in JSDOM, every module executed, 13 interactions driven (palette, theme, newsletter, reveals, triage, pipeline, ROI, forms) |
 | API smoke test | ✅ PASS | CI boots the server and exercises `/api/health` and `/api/triage` |
 | Responsive & accessible | ✅ | Fluid from 320px, keyboard-operable tabs/accordions/drawers, `prefers-reduced-motion` honoured, AA contrast in both themes |
 | Privacy | ✅ | No cookies, no analytics, no trackers, no CDN fonts — enforced by the site audit |

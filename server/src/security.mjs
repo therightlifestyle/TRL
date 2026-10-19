@@ -32,7 +32,7 @@ export function applyCors(req, res, { allowedOrigins = [], allowCredentials = fa
     res.setHeader('Access-Control-Allow-Origin', allowedOrigins.includes('*') ? '*' : origin);
     res.setHeader('Vary', 'Origin');
     if (allowCredentials) res.setHeader('Access-Control-Allow-Credentials', 'true');
-    res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PATCH,OPTIONS');
+    res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PATCH,DELETE,OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type,Authorization,X-Requested-With');
     res.setHeader('Access-Control-Max-Age', '600');
   }
