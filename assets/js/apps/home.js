@@ -16,7 +16,7 @@ function renderCapabilities(services) {
   const host = qs('#home-capabilities');
   if (!host) return;
   host.innerHTML = services.map((service) => `
-    <article class="card card-link" data-service="${service.id}">
+    <article class="card card-link" data-service="${service.id}" data-spot tabindex="0" role="link">
       <span class="card-ico">${icon(service.icon, 19)}</span>
       <span class="card-n">${service.number}</span>
       <h3>${escapeHtml(service.title)}</h3>

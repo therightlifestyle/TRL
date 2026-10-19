@@ -21,15 +21,20 @@ How the TRL platform is put together, and why each decision was made.
 
 ### Presentation — `assets/css/`
 
-Five files, loaded in order, each with one job:
+Six files, loaded in order, each with one job:
 
 | File | Responsibility |
 |---|---|
-| `tokens.css` | Every colour, size, radius, easing and type step, for both themes. No component may invent a value. |
+| `tokens.css` | Every colour, size, radius, easing, duration, blur, gradient and type step, for both themes. No component may invent a value. |
 | `base.css` | Reset, typography, layout primitives, reveal animations, skip link, print rules. |
-| `components.css` | Reusable interface: navigation, buttons, cards, hero, tabs, accordions, forms, tables, toasts, footer. |
+| `components.css` | Reusable interface: navigation, buttons, cards, hero, tabs, accordions, forms, tables, toasts, footer, newsletter. |
+| `motion.css` | The animation and effects layer: spotlight, tilt, parallax, magnetic buttons, reveal variants, stagger, grain, aurora, skeletons, palette, modal, toast stack, back-to-top. |
 | `pages.css` | Page-level compositions: insight grids, drawers, service blocks, blueprint, calculator, timelines. |
 | `console.css` | The Console application shell: rail, panels, kanban, chat, KPI rows. |
+
+**How the motion layer is kept safe.** It is entirely opt-in: nothing in `motion.css` overrides an existing selector unless it is prefixed `.trl-` or targets an attribute hook (`[data-spot]`, `[data-tilt]`, `[data-magnetic]`, `[data-stagger]`, `[data-parallax]`). It animates `transform`, `opacity` and `filter` only — never a layout property. Every timing and blur value resolves to a token. And a single `prefers-reduced-motion` block at the end of the file switches every effect off, including the pointer-driven ones.
+
+The division of labour is strict: **JavaScript measures and writes CSS custom properties (`--mx`, `--my`, `--scroll`, `--i`, `--mag-x`); CSS does all the drawing.** That keeps every listener on `document` with rAF throttling, so the cost of the effect layer does not grow with the number of elements that opt in.
 
 ### Application — `assets/js/`
 
@@ -51,15 +56,25 @@ engines/    pure business logic — no DOM, no network, no timers
   assistant.js  retrieval over the knowledge base
   brief.js      scope brief builder
   pipeline.js   engagement stages, transitions, metrics
+  search.js     unified site search — the ⌘K palette and /api/search
 
 components/ reusable UI behaviour
   theme · nav · reveal · tabs · accordion · counters · toast · chat · icons
+  motion    scroll progress, spotlight, tilt, parallax, magnetic, stagger
+  palette   the ⌘K command palette
+  modal     accessible dialog primitive
+  totop     back-to-top control with a progress ring
+  subscribe footer newsletter form with an on-device fallback
 
 apps/       page-level composition
   home · services · work · insights · contact · console
 ```
 
 `main.js` boots the shared components, reads `document.body.dataset.page` and dynamically imports the matching app. A page that fails to initialise degrades to its static content and shows a toast — it never breaks the document.
+
+The enhancement layer (motion, palette, back-to-top, subscribe) is loaded in its own `try` block after the shared components, so an effect failing can never stop a page app from mounting. It also mounts the progress bar, grain overlay and ⌘K trigger itself: those elements are meaningless without JavaScript, so keeping them out of the HTML means the markup stays correct when scripts are disabled.
+
+**Reveals are continuous, not one-shot.** Most grids on this site are rendered by an app module after boot, so `reveal.js` keeps a `MutationObserver` bound to the current document and tracks `.rv` nodes as they appear — in the animated path *and* in the reduced-motion path, where a late node still has to be shown rather than left invisible.
 
 ### Data — `assets/data/`
 
@@ -85,6 +100,28 @@ security.mjs CSP, CORS allow-listing, rate limiter
 validate.mjs input validation and normalisation
 logger.mjs   structured logging
 ```
+
+**Endpoints.** `GET /api` returns this table plus the version of every engine, so the API is discoverable without reading the source.
+
+| Endpoint | Purpose |
+|---|---|
+| `GET /api`, `GET /api/engines` | Route list and engine version manifest |
+| `GET /api/health` | Liveness, uptime, engine version, lead count |
+| `GET /api/services`, `/work`, `/insights`, `/knowledge`, `/faq`, `/api/config` | The data layer, served with weak ETags |
+| `GET /api/pipeline`, `/api/blueprint`, `/api/brief/questions` | Engine definitions the Console renders |
+| `POST /api/triage` | Classify an enquiry — the same engine file the browser runs |
+| `POST /api/assistant`, `GET /api/assistant/starters` | Retrieval over the knowledge base |
+| `POST /api/roi` | The automation opportunity model |
+| `POST /api/brief` | The scope brief builder |
+| `GET|POST /api/search` | Unified search over the whole corpus |
+| `POST /api/leads`, `GET /api/leads`, `GET|PATCH|DELETE /api/leads/:id` | Lead lifecycle, with an auditable stage history |
+| `POST /api/newsletter`, `GET /api/subscribers` | Newsletter signup, idempotent per address |
+| `GET /api/metrics` | Totals by stage, intent and recency |
+
+Two implementation notes worth keeping:
+
+- **The search corpus is cached by content, not by time.** `createSearchIndex` fingerprints the five data files by size and mtime, and rebuilds only when a fingerprint changes. Without that, every keystroke-driven query would re-tokenise the entire corpus.
+- **Conditional requests.** Data endpoints answer `304 Not Modified` against a weak ETag of the serialised body, which is most of the bandwidth the API serves.
 
 ---
 
@@ -167,7 +204,7 @@ Without an API, the enquiry is queued in localStorage and a pre-filled WhatsApp 
 | Per-IP rate limiting | `server/src/security.mjs` (120 req/min default) |
 | Path traversal protection | `server/src/http.mjs` (`safeResolve`) |
 | Input validation and bounded bodies | `server/src/validate.mjs`, `server/src/http.mjs` |
-| Admin endpoints protected | `ADMIN_TOKEN` — required for `/api/leads` and `/api/metrics` |
+| Admin endpoints protected | `ADMIN_TOKEN` — required for `/api/leads`, `/api/leads/:id`, `/api/subscribers` and `/api/metrics` |
 | Enquiry records excluded from git | `.gitignore` → `server/data/*.json` |
 
 ---

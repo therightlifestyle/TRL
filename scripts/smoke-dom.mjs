@@ -69,7 +69,7 @@ async function runPage(page, after) {
   const globals = ['window', 'document', 'navigator', 'location', 'history', 'localStorage',
     'sessionStorage', 'CustomEvent', 'Event', 'MouseEvent', 'KeyboardEvent', 'Node', 'Element',
     'HTMLElement', 'getComputedStyle', 'requestAnimationFrame', 'cancelAnimationFrame',
-    'matchMedia', 'fetch', 'DOMParser', 'NodeFilter', 'CSS'];
+    'matchMedia', 'fetch', 'DOMParser', 'NodeFilter', 'CSS', 'MutationObserver'];
   for (const key of globals) {
     if (!(key in window)) continue;
     try {
@@ -94,10 +94,9 @@ async function runPage(page, after) {
     unobserve() {}
     disconnect() {}
   };
-  globalThis.MutationObserver = class {
-    observe() {}
-    disconnect() {}
-  };
+  // MutationObserver is deliberately NOT stubbed. JSDOM implements it for real,
+  // and replacing it with a no-op hides genuine behaviour: reveal tracking of
+  // late-rendered content depends on it firing.
   globalThis.scrollTo = () => {};
 
   const mockFetch = async (url) => {
@@ -292,6 +291,105 @@ const INTERACTIONS = [
       await new Promise((r) => setTimeout(r, 60));
       const readout = doc.querySelector('#contact-readout');
       if (!readout || readout.textContent.trim().length < 20) throw new Error('no routing readout produced');
+    }
+  },
+  {
+    page: 'index.html',
+    name: 'content rendered after boot is revealed, not left invisible',
+    async run(window) {
+      const doc = window.document;
+      // These cards are built by apps/home.js long after initReveals() ran.
+      // A reveal observer that only scans the initial document leaves them at
+      // opacity 0 — present in the DOM, invisible on screen.
+      const late = doc.querySelectorAll('#home-work .work');
+      if (late.length < 1) throw new Error('no work cards rendered');
+      const hidden = [...late].filter((node) => node.classList.contains('rv') && !node.classList.contains('in'));
+      if (hidden.length) throw new Error(`${hidden.length} late-rendered .rv node(s) never received .in`);
+    }
+  },
+  {
+    page: 'index.html',
+    name: 'command palette opens, searches the corpus and closes',
+    async run(window) {
+      const doc = window.document;
+      doc.dispatchEvent(new window.KeyboardEvent('keydown', { key: 'k', ctrlKey: true, bubbles: true }));
+      await new Promise((r) => setTimeout(r, 220));
+
+      const panel = doc.querySelector('#trl-palette');
+      if (!panel) throw new Error('Ctrl+K did not open the palette');
+      const items = panel.querySelectorAll('.palette-item');
+      if (items.length < 1) throw new Error('palette opened with no indexed entries');
+
+      const input = panel.querySelector('input');
+      input.value = 'automation';
+      input.dispatchEvent(new window.Event('input', { bubbles: true }));
+      await new Promise((r) => setTimeout(r, 220));
+
+      const filtered = panel.querySelectorAll('.palette-item');
+      if (filtered.length < 1) throw new Error('searching "automation" returned nothing');
+      if (!/automation/i.test(panel.querySelector('.palette-body').textContent)) {
+        throw new Error('search results do not mention automation');
+      }
+
+      doc.dispatchEvent(new window.KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
+      await new Promise((r) => setTimeout(r, 40));
+      if (doc.querySelector('#trl-palette')) throw new Error('Escape did not close the palette');
+    }
+  },
+  {
+    page: 'index.html',
+    name: 'effect layer mounts progress bar, back-to-top and scroll variable',
+    async run(window) {
+      const doc = window.document;
+      if (!doc.querySelector('#trl-progress .progress-bar')) throw new Error('scroll progress bar missing');
+      if (!doc.querySelector('#totop')) throw new Error('back-to-top control missing');
+      if (!doc.querySelector('#palette-trigger')) throw new Error('palette trigger missing from the nav');
+      const scroll = doc.documentElement.style.getPropertyValue('--scroll');
+      if (scroll === '') throw new Error('--scroll was never written by the motion layer');
+      if (!doc.documentElement.classList.contains('motion-ready')) throw new Error('motion layer did not finish');
+    }
+  },
+  {
+    page: 'index.html',
+    name: 'newsletter form rejects a bad address and accepts a good one',
+    async run(window) {
+      const doc = window.document;
+      const form = doc.querySelector('#subscribe-form');
+      if (!form) throw new Error('newsletter form missing from the footer');
+      const input = doc.querySelector('#sub-email');
+      const button = doc.querySelector('#subscribe-form button[type="submit"]');
+      if (!input || !button) throw new Error('newsletter form is missing its input or button');
+
+      // Invalid address: the form must refuse it rather than submit.
+      input.value = 'not-an-email';
+      form.dispatchEvent(new window.Event('submit', { bubbles: true, cancelable: true }));
+      await new Promise((r) => setTimeout(r, 60));
+      if (!doc.querySelector('.toast.err')) throw new Error('an invalid address was not rejected');
+
+      // Valid address: no API is configured here, so it must fall back locally
+      // and say so honestly instead of failing silently.
+      input.value = 'founder@example.com';
+      form.dispatchEvent(new window.Event('submit', { bubbles: true, cancelable: true }));
+      await new Promise((r) => setTimeout(r, 120));
+      const host = doc.querySelector('.toast-host');
+      if (!host || !host.textContent.length) throw new Error('a valid address produced no response');
+      if (input.value !== '') throw new Error('the input was not cleared after submitting');
+    }
+  },
+  {
+    page: 'index.html',
+    name: 'theme toggle switches the document and persists the choice',
+    async run(window) {
+      const doc = window.document;
+      const toggle = doc.querySelector('#theme-toggle');
+      if (!toggle) throw new Error('theme toggle missing');
+      toggle.dispatchEvent(new window.MouseEvent('click', { bubbles: true }));
+      await new Promise((r) => setTimeout(r, 30));
+      if (doc.documentElement.getAttribute('data-theme') !== 'light') throw new Error('theme did not switch to light');
+      if (toggle.getAttribute('aria-pressed') !== 'true') throw new Error('toggle aria-pressed not updated');
+      toggle.dispatchEvent(new window.MouseEvent('click', { bubbles: true }));
+      await new Promise((r) => setTimeout(r, 30));
+      if (doc.documentElement.getAttribute('data-theme')) throw new Error('theme did not switch back to dark');
     }
   }
 ];

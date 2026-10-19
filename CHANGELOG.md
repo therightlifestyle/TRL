@@ -2,6 +2,48 @@
 
 All notable changes to the TRL codebase are documented in this file.
 
+## [v3.1.0] — 2026-10-19 · The Motion & Interface Release
+
+A dedicated animation layer, a site-wide command palette, and an API that exposes every engine rather than only triage. Every effect is opt-in, token-driven and disabled under `prefers-reduced-motion`.
+
+### Added
+
+**Design system**
+- **Motion and optics tokens** — a duration scale (`--dur-instant` → `--dur-scene`), six named easing curves including a spring and an expo-out house curve, a blur scale, gradient and elevation tokens, focus-ring tokens and four new z-index steps. Both themes are covered, so no effect layer declares a literal value.
+- **New layer `assets/css/motion.css`** — the whole effect system in one place: scroll progress, cursor spotlight, 3D tilt, parallax, magnetic buttons, ripple, sheen sweep, six reveal variants, automatic stagger, line-mask and per-character headline reveals, film grain, aurora mesh, shimmer skeletons, animated gradient text, conic edge glow, Ken Burns hero, the palette, the modal, the toast stack and the back-to-top ring.
+
+**Interface**
+- **⌘K command palette** (`components/palette.js`) — one input reaching every page, all seven services, the demonstrations, the insights, the FAQ, the knowledge base and a set of actions (theme, WhatsApp, copy email, book the audit). Keyboard-navigable, focus-managed, with live result counts and query timing.
+- **Unified search engine** (`engines/search.js`) — pure and deterministic: field-weighted scoring, term coverage, ordered-subsequence fuzzy matching and HTML-escaping highlighting. The browser palette and `GET /api/search` run this one file, so they cannot rank differently.
+- **Back-to-top control** with a scroll-progress ring driven by the same `--scroll` variable as the top progress bar.
+- **Accessible modal primitive** (`components/modal.js`) — focus trap, Escape, focus restore.
+- **Theme system upgraded** — three states (`dark` / `light` / `auto`) with the OS preference followed live, long-press on the toggle to opt into auto, and a `trl:theme` event for anything that needs to react.
+- **Toast system upgraded** — per-type icons, manual dismissal, an inline action button, a drain bar and a bounded stack, behind the call signature the site already used.
+- **Newsletter signup** in every page footer, posting to `POST /api/newsletter`, with an honest on-device fallback and a warning toast when no API is connected.
+
+**API**
+- **Every engine is now reachable** — `POST /api/assistant`, `POST /api/roi`, `POST /api/brief`, `GET /api/blueprint`, `GET /api/brief/questions`, `GET /api/assistant/starters`.
+- **Search endpoints** — `GET|POST /api/search` over a corpus cached in memory and rebuilt only when a data file changes on disk.
+- **Lead lifecycle completed** — `GET /api/leads/:id`, `DELETE /api/leads/:id`, and stage changes now append to an auditable, capped history instead of overwriting.
+- **Newsletter** — `POST /api/newsletter` (idempotent per address) and `GET /api/subscribers`.
+- **Self-describing API** — `GET /api` lists every route and the version of every engine; `GET /api/engines` returns the version manifest alone.
+- **Conditional requests** — data endpoints answer `304 Not Modified` from a weak ETag, which is most of the bandwidth the API serves.
+
+### Fixed
+
+- **Late-rendered content was invisible.** `initReveals()` scanned the document once at boot, so every card an app module rendered afterwards kept `opacity: 0` — the home page's work section was present in the DOM and never shown. Reveals now track nodes added later through a document-bound `MutationObserver`, in both the animated and reduced-motion paths. A smoke check asserts this cannot regress.
+- **The smoke harness hid that bug twice over** — it stubbed `MutationObserver` to a no-op and never exposed it on `globalThis`. It now uses JSDOM's real implementation, so the tests observe actual DOM behaviour.
+- **`/api` was unreachable** — the server only treated paths beginning `/api/` as API routes, so the bare index fell through to the static handler and 404'd.
+- **Knowledge entries leaked a boolean into the UI** — `starter` is a "show as starter question" flag, not text; the index now uses the entry's phrased question as the subtitle.
+- **Stage history was persisted but not returned** — `PATCH /api/leads/:id` replied with the pre-history record; it now returns the updated one.
+- **`scrollIntoView` and focus-restore selectors could throw** — the palette guards both, so a missing method or an id-less trigger cannot break the page.
+
+### Changed
+
+- `assets/js/main.js` mounts the progress bar, grain overlay and ⌘K trigger itself, so the HTML stays meaningful with scripts disabled.
+- The browser API client (`core/api.js`) exposes the full endpoint surface.
+- Verification grew from 42 to 68 unit assertions, plus six new browser-simulation interaction checks.
+
 ## [v3.0.0] — 2026-10-19 · The Platform Release
 
 The site moves from a static brochure to a working company platform: a live application surface (the TRL Console), a shared engine layer, an optional API, and an automated quality gate.

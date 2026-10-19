@@ -1,6 +1,6 @@
 {
   "name": "trl",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "private": true,
   "description": "TRL — The Right Lifestyle: business systems, AI automation and digital services. Static-first site plus an optional zero-dependency Node API.",
   "type": "module",

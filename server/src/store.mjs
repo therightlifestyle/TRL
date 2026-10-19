@@ -15,7 +15,7 @@ import { randomUUID } from 'node:crypto';
 import { logger } from './logger.mjs';
 
 export class JsonStore {
-  constructor({ file, initial = { leads: [] } } = {}) {
+  constructor({ file, initial = { leads: [], subscribers: [] } } = {}) {
     this.file = file;
     this.initial = initial;
     this.state = structuredClone(initial);
@@ -96,15 +96,72 @@ export class JsonStore {
     return updated;
   }
 
+  /** Remove a lead. Returns the removed record, or null when it never existed. */
+  async deleteLead(id) {
+    const leads = this.state.leads || [];
+    const index = leads.findIndex((lead) => lead.id === id);
+    if (index === -1) return null;
+    const [removed] = leads.splice(index, 1);
+    this.state.leads = leads;
+    await this.#persist();
+    return removed;
+  }
+
+  /** Append a history entry so stage moves are auditable, not overwritten. */
+  async appendHistory(id, entry) {
+    const lead = this.getLead(id);
+    if (!lead) return null;
+    const history = [...(lead.history || []), { at: new Date().toISOString(), ...entry }].slice(-50);
+    return this.updateLead(id, { history });
+  }
+
+  listSubscribers({ topic = null, limit = 500 } = {}) {
+    const subscribers = this.state.subscribers || [];
+    const filtered = topic ? subscribers.filter((sub) => sub.topic === topic) : subscribers;
+    return filtered.slice(-limit).reverse();
+  }
+
+  /** Idempotent subscribe: a repeat address updates the topic instead of duplicating. */
+  async subscribe({ email, topic = 'general' }) {
+    const subscribers = this.state.subscribers || [];
+    const existing = subscribers.find((sub) => sub.email === email);
+    const now = new Date().toISOString();
+    if (existing) {
+      existing.topic = topic;
+      existing.updatedAt = now;
+      this.state.subscribers = subscribers;
+      await this.#persist();
+      return { subscriber: existing, created: false };
+    }
+    const subscriber = { email, topic, createdAt: now, updatedAt: now };
+    this.state.subscribers = [...subscribers, subscriber];
+    await this.#persist();
+    return { subscriber, created: true };
+  }
+
   metrics() {
     const leads = this.state.leads || [];
     const byStage = leads.reduce((acc, lead) => {
       acc[lead.stage] = (acc[lead.stage] || 0) + 1;
       return acc;
     }, {});
+    const byIntent = leads.reduce((acc, lead) => {
+      const intent = lead.triage?.intent || 'unclassified';
+      acc[intent] = (acc[intent] || 0) + 1;
+      return acc;
+    }, {});
+
+    const last7 = leads.filter((lead) => {
+      const age = Date.now() - new Date(lead.createdAt).getTime();
+      return Number.isFinite(age) && age < 7 * 24 * 60 * 60 * 1000;
+    });
+
     return {
       total: leads.length,
       byStage,
+      byIntent,
+      subscribers: (this.state.subscribers || []).length,
+      last7Days: last7.length,
       newest: leads.length ? leads[leads.length - 1].createdAt : null
     };
   }
@@ -113,6 +170,6 @@ export class JsonStore {
 export function createStore({ dataDir }) {
   return new JsonStore({
     file: join(dataDir, 'leads.json'),
-    initial: { leads: [] }
+    initial: { leads: [], subscribers: [] }
   });
 }

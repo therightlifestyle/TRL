@@ -81,7 +81,9 @@ const server = createServer(async (req, res) => {
     return;
   }
 
-  if (url.pathname.startsWith('/api/')) {
+  // The bare "/api" index is part of the API surface too, so it must not fall
+  // through to the static handler (which would 404 it as a missing file).
+  if (url.pathname === '/api' || url.pathname.startsWith('/api/')) {
     const key = clientKey(req);
     const gate = limit(key);
     res.setHeader('X-RateLimit-Limit', String(config.rateLimit));
