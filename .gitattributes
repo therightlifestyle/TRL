@@ -1,0 +1,21 @@
+# Set default behavior to automatically normalize line endings
+* text=auto eol=lf
+
+# Explicit text files
+*.html text diff=html
+*.css text diff=css
+*.js text
+*.json text
+*.xml text
+*.md text
+*.svg text
+*.txt text
+
+# Explicit binary files
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.woff binary
+*.woff2 binary
