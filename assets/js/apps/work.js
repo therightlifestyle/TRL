@@ -59,6 +59,9 @@ function renderGrid() {
   const list = filtered();
   if (count) count.textContent = `${list.length} item${list.length === 1 ? '' : 's'}`;
   empty?.classList.toggle('show', list.length === 0);
+  if (!list.length && !items.length) {
+    if (empty) empty.textContent = 'The work index could not be loaded. Please reload the page.';
+  }
 
   if (!grid) return;
   grid.innerHTML = list.map((item) => `

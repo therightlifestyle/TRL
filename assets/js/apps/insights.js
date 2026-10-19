@@ -88,6 +88,15 @@ function renderGrid() {
   const list = filtered();
 
   if (count) count.textContent = `${list.length} of ${articles.length}`;
+  if (empty) {
+    const nothing = list.length === 0;
+    empty.classList.toggle('show', nothing);
+    if (nothing) {
+      empty.textContent = articles.length
+        ? 'No insight matches that search. Try a different word.'
+        : 'The insights index could not be loaded. Please reload the page.';
+    }
+  }
 
   if (grid) {
     grid.innerHTML = list.map((article) => `
