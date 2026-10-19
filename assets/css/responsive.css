@@ -1,0 +1,53 @@
+/* TRL responsive finishing layer — loaded after all page and motion styles. */
+:where(*, *::before, *::after) { min-width: 0; }
+:where(p, li, a, button, label, h1, h2, h3, h4, code) { overflow-wrap: anywhere; }
+:where(input, select, textarea) { max-width: 100%; }
+
+@media (max-width: 860px) {
+  html { scroll-padding-top: 76px; }
+  .nav-links { z-index: 1; padding-top: max(5.6rem, calc(env(safe-area-inset-top) + 4.8rem));
+    padding-bottom: max(2.2rem, env(safe-area-inset-bottom)); max-height: 100dvh; }
+  .nav-links a { min-height: 48px; display: flex; align-items: center; }
+  .nav-links .theme-toggle { min-height: 48px; }
+  .burger { min-width: 44px; min-height: 44px; }
+  .sec, .sec-tight { scroll-margin-top: 76px; }
+  .grid, .grid.g2, .grid.g3, .grid.g4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .con-main { min-width: 0; }
+  .con-nav button { min-height: 42px; }
+}
+@media (max-width: 600px) {
+  :root { --gut: 1rem; --sec: clamp(3.2rem, 13vw, 4.4rem); }
+  .grid, .grid.g2, .grid.g3, .grid.g4,
+  .grid-2, .grid-side, .assist-wrap, .blueprint, .calc,
+  .audit-in, .cs-grid, .cta-in, .sec-split, .founder-grid,
+  .foot-sub { grid-template-columns: minmax(0, 1fr) !important; }
+  .hero { padding-top: 6.3rem; }
+  .hero-in { gap: 1.6rem; }
+  .hero-visual { width: 100%; }
+  .hero-visual > img { aspect-ratio: 4 / 3; object-fit: cover; }
+  .hero-meta > div { align-items: flex-start; }
+  .strip-in { grid-template-columns: minmax(0, 1fr); }
+  .btn-row { gap: .7rem; }
+  .btn-row .btn, .btn-row > a { width: 100%; min-height: 48px; }
+  .form-grid > *, .form-field, .input, select.input, textarea.input { min-width: 0; width: 100%; }
+  .svc-cols { grid-template-columns: minmax(0, 1fr); }
+  .svc-block-head { grid-template-columns: minmax(0, 1fr); }
+  .calc-out { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .kpi-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .table-wrap { max-width: 100%; }
+  .table-wrap table { min-width: 620px; }
+  .con-rail { max-width: 100vw; }
+  .con-nav { min-width: max-content; }
+  .chat-input, .chat-form { min-width: 0; }
+  .foot-legal { gap: .7rem 1rem; }
+  .drawer-panel { max-width: 100vw; }
+}
+@media (max-width: 380px) {
+  .calc-out, .kpi-row { grid-template-columns: minmax(0, 1fr); }
+  .display { font-size: clamp(2.25rem, 11vw, 2.7rem); }
+  .nav-in { padding-inline: .85rem; }
+  .wm-mark { font-size: 1.35rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .nav-links { transition: none !important; }
+}

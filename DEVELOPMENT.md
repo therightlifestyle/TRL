@@ -42,7 +42,7 @@ Open `http://localhost:8080`. The same process serves the site and the API.
 | `npm run lint` | Syntax-checks every `.js`/`.mjs` file with Node's own parser |
 | `npm run check` | Site integrity audit: links, assets, page metadata, third-party requests |
 | `npm test` | Unit tests for every engine plus the site audit |
-| `npm run smoke` | Browser simulation — loads every page in JSDOM and drives the real UI *(optional, needs `npm install --no-save jsdom`)* |
+| `npm run smoke` | Browser simulation — loads every page in JSDOM and drives the real UI (install dev tools once with `npm install`) |
 | `npm run verify` | lint → check → test, the same sequence CI runs |
 
 > A server is required for preview. The front end uses ES modules, which browsers refuse to load over `file://`.
